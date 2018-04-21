@@ -4,14 +4,14 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ExpenseService {
-  public API = '//localhost:8080';
-  public EXPENSE_API = this.API + '/expenses';
+  public API = '//localhost:8081';
+  public EXPENSE_API = this.API + '/open-expenses';
 
   constructor(private http: HttpClient) {
   }
 
   getAll(): Observable<any> {
-    return this.http.get(this.API + '/expenses');
+    return this.http.get(this.API + '/open-expenses');
   }
 
   get(id: string) {
