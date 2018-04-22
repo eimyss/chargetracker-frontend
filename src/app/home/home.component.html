@@ -3,8 +3,21 @@
     <button mat-raised-button color="accent" *ngIf="!isAuthenticated"
             (click)="oktaAuth.loginRedirect()">Login
     </button>
+
+    <div *ngIf="!isAuthenticated">
+      Here is reporing panel
+      Please login before proceed
+    </div>
+
+
     <button mat-raised-button color="accent" *ngIf="isAuthenticated"
             [routerLink]="['/expense-list']">Car List
     </button>
+
+    <div *ngIf="isAuthenticated">
+      Here is dashnoard panel
+      maybe some charting libraries will be okay
+    </div>
+
   </mat-card-content>
 </mat-card>

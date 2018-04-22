@@ -14,6 +14,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/okta/auth.interceptor';
 import { HomeComponent } from './home/home.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTableModule} from '@angular/material/table';
 
 
 const appRoutes: Routes = [
@@ -62,6 +64,8 @@ const config = {
      MatCardModule,
      MatInputModule,
      MatListModule,
+     MatTableModule,
+     MatGridListModule,
      MatToolbarModule,
      FormsModule,
   RouterModule.forRoot(appRoutes),
