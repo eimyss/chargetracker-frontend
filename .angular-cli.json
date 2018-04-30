@@ -25,6 +25,9 @@
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
+	"localhost": "environments/environment.localhost.ts",
+	"server-backend": "environments/environment.server-backend.ts",
+	"laptop-backend": "environments/environment.laptop-backend.ts",
         "prod": "environments/environment.prod.ts"
       }
     }
