@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class ExpenseService {
-  public API = '//localhost:8081';
+  public API = environment.API;
   public EXPENSE_API = this.API + '/open-expenses';
 
   constructor(private http: HttpClient) {
