@@ -12,7 +12,7 @@ export class ExpenseListComponent implements OnInit {
 
   expenses: Array<any>;
   displayedColumns = ['giphyUrl', 'name', 'betrag', 'ort'];
-  dataSource: MatTableDataSource;
+  dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatSort) sort: MatSort;
 
