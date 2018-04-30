@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  API: 'http://java-1.eimantas.server:8081'
+  API: 'http://java-1.eimantas.server:8081',
+    backend: true
 };
