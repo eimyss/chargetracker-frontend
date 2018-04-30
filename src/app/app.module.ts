@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { OktaCallbackComponent, OktaAuthModule } from '@okta/okta-angular';
 import { ExpenseService } from './shared/expense/expense.service';
+import { EnvironmentService } from './shared/environment/environment.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { GiphyService } from './shared/giphy/giphy.service';
@@ -45,7 +46,7 @@ const appRoutes: Routes = [
 
 const config = {
   issuer: 'https://dev-463008.oktapreview.com/oauth2/default',
-  redirectUri: 'http://' + window.location.hostname + '/implicit/callback',
+  redirectUri: 'http://' + window.location.hostname +':' +window.location.port +  '/implicit/callback',
   clientId: '0oaepwz9ykeNaSuWK0h7'
 };
 
@@ -71,7 +72,7 @@ const config = {
   RouterModule.forRoot(appRoutes),
      OktaAuthModule.initAuth(config)
   ],
-  providers: [ExpenseService,GiphyService,  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [ExpenseService,EnvironmentService,GiphyService,  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
