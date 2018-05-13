@@ -32,6 +32,11 @@ export class ExpenseListComponent implements OnInit {
        this.giphyService.get(expense.name).subscribe(url => expense.giphyUrl = url);
      }
  });
+
+ this.expenseService.getOverview().subscribe(data => {
+   console.log('overview done');
+   console.log(data);
+});
   }
 
 }
