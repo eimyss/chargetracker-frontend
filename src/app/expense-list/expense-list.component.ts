@@ -39,8 +39,8 @@ export class ExpenseListComponent implements OnInit {
   ngOnInit() {
     this.expenseService.getAll().subscribe(data => {
       this.expenses = data;
-      this.length = data.length;
-      console.log('expenses done');
+      this.length = this.expenses.length;
+      console.log('expenses done with lenght: ' + this.expenses.length + 'and set lenght : ' + this.length);
       this.dataSource = new MatTableDataSource(this.expenses);
       this.dataSource.sort = this.sort;
        this.dataSource.paginator = this.paginator;
@@ -49,10 +49,7 @@ export class ExpenseListComponent implements OnInit {
      }
  });
 
- this.expenseService.getOverview().subscribe(data => {
-   console.log('overview done');
-   console.log(data);
-});
+
   }
 
 }

@@ -18,6 +18,7 @@ import { HomeComponent } from './home/home.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
 MatSortModule, MatTableModule } from "@angular/material";
+import { ExpensesOverviewComponent } from './expenses-overview/expenses-overview.component';
 
 
 const appRoutes: Routes = [
@@ -56,7 +57,8 @@ const config = {
     AppComponent,
     ExpenseListComponent,
     ExpenseEditComponent,
-    HomeComponent
+    HomeComponent,
+    ExpensesOverviewComponent
   ],
   imports: [
     BrowserModule,
