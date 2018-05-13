@@ -2,36 +2,44 @@
 
 
 <div class="example-container mat-elevation-z8">
+
+  <mat-paginator [length]="length"
+                [pageSize]="pageSize"
+                [pageSizeOptions]="pageSizeOptions"
+                (page)="pageEvent = $event">
+  </mat-paginator>
+
   <mat-table #table [dataSource]="dataSource" matSort>
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
 
-    <!-- Position Column -->
+
     <ng-container matColumnDef="giphyUrl">
       <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
       <mat-cell *matCellDef="let expense"> <img mat-card-image src="{{expense.giphyUrl}}" alt="Giffy!!!" height="42" width="42"></mat-cell>
     </ng-container>
 
-    <!-- Name Column -->
+
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
       <mat-cell *matCellDef="let expense"> {{expense.name}} </mat-cell>
     </ng-container>
 
-    <!-- Weight Column -->
+
     <ng-container matColumnDef="betrag">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Betrag </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.betrag}} </mat-cell>
     </ng-container>
 
-    <!-- Symbol Column -->
+
     <ng-container matColumnDef="ort">
-      <mat-header-cell *matHeaderCellDef> Ort </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ort </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.ort}} </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/expense-edit', row.id]" ></mat-row>
+
+
+
   </mat-table>
 </div>

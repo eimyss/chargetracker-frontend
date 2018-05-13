@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { GiphyService } from './shared/giphy/giphy.service';
 import { ExpenseListComponent } from './expense-list/expense-list.component';
-import { MatButtonModule, MatCardModule, MatInputModule, MatListModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatListModule, MatToolbarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExpenseEditComponent } from './expense-edit/expense-edit.component';
 import { FormsModule } from '@angular/forms';
@@ -16,7 +16,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/okta/auth.interceptor';
 import { HomeComponent } from './home/home.component';
 import {MatGridListModule} from '@angular/material/grid-list';
-import {MatTableModule} from '@angular/material/table';
+import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
+MatSortModule, MatTableModule } from "@angular/material";
 
 
 const appRoutes: Routes = [
@@ -68,6 +69,11 @@ const config = {
      MatTableModule,
      MatGridListModule,
      MatToolbarModule,
+     MatInputModule,
+   MatTableModule,
+   MatPaginatorModule,
+   MatSortModule,
+MatProgressSpinnerModule,
      FormsModule,
   RouterModule.forRoot(appRoutes),
      OktaAuthModule.initAuth(config)
