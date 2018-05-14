@@ -8,6 +8,7 @@ import {expenses} from '../mock/mock-expenses'
 @Injectable()
 export class ExpenseService {
 
+
   constructor(private http: HttpClient,private environment: EnvironmentService) {
   }
 
@@ -30,6 +31,10 @@ export class ExpenseService {
     }
 
   }
+
+	doExpenseSearch(name: string):  Observable<any> {
+	    return this.http.get(this.environment.API + '/expenses/search?name=' + name);
+	}
 
   getMockedExpenses(): Observable<any> {
   return of(expenses);

@@ -19,7 +19,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
 MatSortModule, MatTableModule } from "@angular/material";
 import { ExpensesOverviewComponent } from './expenses-overview/expenses-overview.component';
-
+import { ExpensesSearchComponent } from './expenses-search/expenses-search.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -58,12 +60,14 @@ const config = {
     ExpenseListComponent,
     ExpenseEditComponent,
     HomeComponent,
-    ExpensesOverviewComponent
+    ExpensesOverviewComponent,
+    ExpensesSearchComponent
   ],
   imports: [
     BrowserModule,
      HttpClientModule,
      BrowserAnimationsModule,
+     ReactiveFormsModule,
      MatButtonModule,
      MatCardModule,
      MatInputModule,
@@ -73,6 +77,7 @@ const config = {
      MatToolbarModule,
      MatInputModule,
    MatTableModule,
+   MatAutocompleteModule,
    MatPaginatorModule,
    MatSortModule,
 MatProgressSpinnerModule,
