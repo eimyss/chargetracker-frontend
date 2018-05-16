@@ -8,6 +8,7 @@ export class EnvironmentService {
   public API = environment.API;
   public EXPENSE_API = this.API + '/open-expenses';
   public backend_enabled = environment.backend;
+  public title = environment.title;
 
   constructor() {
   }

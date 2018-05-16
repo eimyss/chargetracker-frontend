@@ -22,6 +22,12 @@ import { ExpensesOverviewComponent } from './expenses-overview/expenses-overview
 import { ExpensesSearchComponent } from './expenses-search/expenses-search.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
+import { ToolbarComponent } from './components/shared/toolbar/toolbar.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { CashFlowComponent } from './components/widgets/cash-flow/cash-flow.component';
+import { CreateNewItemComponent } from './components/widgets/create-new-item/create-new-item.component';
+
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -61,7 +67,11 @@ const config = {
     ExpenseEditComponent,
     HomeComponent,
     ExpensesOverviewComponent,
-    ExpensesSearchComponent
+    ExpensesSearchComponent,
+    DashboardPageComponent,
+    ToolbarComponent,
+    CashFlowComponent,
+    CreateNewItemComponent
   ],
   imports: [
     BrowserModule,
@@ -70,10 +80,10 @@ const config = {
      ReactiveFormsModule,
      MatButtonModule,
      MatCardModule,
-     MatInputModule,
      MatListModule,
      MatTableModule,
      MatGridListModule,
+     MatMenuModule,
      MatToolbarModule,
      MatInputModule,
    MatTableModule,
