@@ -22,6 +22,9 @@
       Please login before proceed
     </div>
 
+    <button mat-button *ngIf="isAuthenticated"
+            [routerLink]="['/calendar-overview']">Calendar
+    </button>
 
     <button mat-button *ngIf="isAuthenticated"
             [routerLink]="['/expense-list']">Expenses List

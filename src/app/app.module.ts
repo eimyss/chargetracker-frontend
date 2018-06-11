@@ -11,6 +11,7 @@ import { MatButtonModule, MatCardModule, MatListModule, MatToolbarModule } from 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExpenseEditComponent } from './expense-edit/expense-edit.component';
 import { FormsModule } from '@angular/forms';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/okta/auth.interceptor';
@@ -27,6 +28,10 @@ import { ToolbarComponent } from './components/shared/toolbar/toolbar.component'
 import {MatMenuModule} from '@angular/material/menu';
 import { CashFlowComponent } from './components/widgets/cash-flow/cash-flow.component';
 import { CreateNewItemComponent } from './components/widgets/create-new-item/create-new-item.component';
+import { CalendarPage } from './pages/calendar-page/calendar-page.component';
+import { CalendarModule } from 'angular-calendar';
+import { DemoUtilsModule } from '../demo-utils/module';
+
 
 
 const appRoutes: Routes = [
@@ -44,6 +49,10 @@ const appRoutes: Routes = [
    path: 'home',
    component: HomeComponent
  },
+ {
+  path: 'calendar-overview',
+  component: CalendarPage
+},
   {
     path: 'expense-edit/:id',
     component: ExpenseEditComponent
@@ -71,13 +80,17 @@ const config = {
     DashboardPageComponent,
     ToolbarComponent,
     CashFlowComponent,
-    CreateNewItemComponent
+    CreateNewItemComponent,
+    CalendarPage
   ],
   imports: [
     BrowserModule,
      HttpClientModule,
+     DemoUtilsModule,
      BrowserAnimationsModule,
      ReactiveFormsModule,
+    NgbModalModule.forRoot(),
+     CalendarModule.forRoot(),
      MatButtonModule,
      MatCardModule,
      MatListModule,
@@ -96,6 +109,7 @@ MatProgressSpinnerModule,
      OktaAuthModule.initAuth(config)
   ],
   providers: [ExpenseService,EnvironmentService,GiphyService,  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }
