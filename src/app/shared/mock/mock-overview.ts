@@ -1,7 +1,6 @@
 import { AccountOverview } from '../dto/account-overview';
 import { AccountDTO } from '../dto/accountDTO';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { Observable ,  of } from 'rxjs';
 import {mockedAccount} from './mock-account';
 
 export const MockedOverview: AccountOverview = {

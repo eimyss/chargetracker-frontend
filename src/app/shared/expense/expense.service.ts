@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable ,  of } from 'rxjs';
+import { map, delay, catchError } from 'rxjs/operators';
 import { EnvironmentService} from '../environment/environment.service'
-import { of } from 'rxjs/observable/of';
 import {expenses} from '../mock/mock-expenses'
 import {MockedOverview} from '../mock/mock-overview'
 
@@ -34,12 +34,16 @@ export class ExpenseService {
   }
 
 	doExpenseSearch(name: string):  Observable<any> {
+      if (this.environment.backend_enabled) {
 	    return this.http.get(this.environment.API + '/expenses/search?name=' + name);
+    }  else {
+        return this.getMockedOverview();
+      }
 	}
 
   getMockedExpenses(): Observable<any> {
     // apparently table is not directly visible, if data delivered instantly...
-  return of(expenses).delay(new Date(Date.now() + 1000));
+  return of(expenses).pipe(delay(new Date(Date.now() + 1000)));
 }
 
 getMockedOverview(): Observable<any> {

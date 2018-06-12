@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/delay';
-import {map, startWith} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
+import {map, startWith, debounceTime} from 'rxjs/operators';
 import {Expense} from '../shared/dto/expense'
 import { ExpenseService } from '../shared/expense/expense.service';
 
@@ -32,17 +28,22 @@ export class ExpensesSearchComponent implements OnInit {
   }
 
   ngOnInit() {
-   this.filteredOptions = this.myControl.valueChanges
-   .debounceTime(400)
-   .do(value => {
 
-      // i don't want to make another request on value change if content placeholder already has it.
-      let exist = this.options.findIndex(t => t.name === value);
-      if (exist > -1) return;
-
-     this.expenseService.doExpenseSearch(value).subscribe((res: any[]) => { this.options = res; });
-     console.log('observable done');
-  }).delay(500).map(() => this.options);
-
+    this.filteredOptions = this.myControl.valueChanges
+         .pipe(debounceTime(400),
+           startWith(''),
+           map(val => this.filter(val))
+         );
   }
+
+  filter(val: string): Expense[] {
+    let exist = this.options.findIndex(t => t.name === val);
+    if (exist > -1) return;
+    console.log('getting backend search');
+ this.expenseService.doExpenseSearch(val).subscribe((res: any[]) => {
+    this.options = res;
+    return res;
+   });
+
+}
 }
