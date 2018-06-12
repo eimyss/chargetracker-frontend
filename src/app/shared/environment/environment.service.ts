@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 @Injectable()
@@ -8,6 +8,7 @@ export class EnvironmentService {
   public API = environment.API;
   public EXPENSE_API = this.API + '/open-expenses';
   public backend_enabled = environment.backend;
+  public title = environment.title;
 
   constructor() {
   }

@@ -1,22 +1,36 @@
 <mat-card>
   <mat-card-content>
-    <button mat-raised-button color="accent" *ngIf="!isAuthenticated"
+    <button mat-button *ngIf="!isAuthenticated"
             (click)="oktaAuth.loginRedirect()">Login
     </button>
+
+
+        <div *ngIf="isAuthenticated">
+
+    <button mat-button >Dashboard</button>
+
+    <button mat-button [matMenuTriggerFor]="menu">Accounts</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Konto 1</button>
+  <button mat-menu-item>Konto 2</button>
+</mat-menu>
+
+    <button mat-button >Statistics</button>
 
     <div *ngIf="!isAuthenticated">
       Here is reporing panel
       Please login before proceed
     </div>
 
-
-    <button mat-raised-button color="accent" *ngIf="isAuthenticated"
-            [routerLink]="['/expense-list']">Car List
+    <button mat-button *ngIf="isAuthenticated"
+            [routerLink]="['/calendar-overview']">Calendar
     </button>
 
-    <div *ngIf="isAuthenticated">
-      Here is dashnoard panel
-      maybe some charting libraries will be okay
+    <button mat-button *ngIf="isAuthenticated"
+            [routerLink]="['/expense-list']">Expenses List
+    </button>
+
+    <app-dashboard-page></app-dashboard-page>
     </div>
 
   </mat-card-content>

@@ -11,6 +11,7 @@ import { MatButtonModule, MatCardModule, MatListModule, MatToolbarModule } from 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExpenseEditComponent } from './expense-edit/expense-edit.component';
 import { FormsModule } from '@angular/forms';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/okta/auth.interceptor';
@@ -22,6 +23,16 @@ import { ExpensesOverviewComponent } from './expenses-overview/expenses-overview
 import { ExpensesSearchComponent } from './expenses-search/expenses-search.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
+import { ToolbarComponent } from './components/shared/toolbar/toolbar.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { CashFlowComponent } from './components/widgets/cash-flow/cash-flow.component';
+import { CreateNewItemComponent } from './components/widgets/create-new-item/create-new-item.component';
+import { CalendarPage } from './pages/calendar-page/calendar-page.component';
+import { CalendarModule } from 'angular-calendar';
+import { DemoUtilsModule } from '../demo-utils/module';
+
+
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -38,6 +49,10 @@ const appRoutes: Routes = [
    path: 'home',
    component: HomeComponent
  },
+ {
+  path: 'calendar-overview',
+  component: CalendarPage
+},
   {
     path: 'expense-edit/:id',
     component: ExpenseEditComponent
@@ -50,7 +65,7 @@ const appRoutes: Routes = [
 
 const config = {
   issuer: 'https://dev-463008.oktapreview.com/oauth2/default',
-  redirectUri: 'http://' + window.location.hostname +':' +window.location.port +  '/implicit/callback',
+  redirectUri: 'http://' + "localhost"+':' +"4200" +  '/implicit/callback',
   clientId: '0oaepwz9ykeNaSuWK0h7'
 };
 
@@ -61,19 +76,27 @@ const config = {
     ExpenseEditComponent,
     HomeComponent,
     ExpensesOverviewComponent,
-    ExpensesSearchComponent
+    ExpensesSearchComponent,
+    DashboardPageComponent,
+    ToolbarComponent,
+    CashFlowComponent,
+    CreateNewItemComponent,
+    CalendarPage
   ],
   imports: [
     BrowserModule,
      HttpClientModule,
+     DemoUtilsModule,
      BrowserAnimationsModule,
      ReactiveFormsModule,
+    NgbModalModule.forRoot(),
+     CalendarModule.forRoot(),
      MatButtonModule,
      MatCardModule,
-     MatInputModule,
      MatListModule,
      MatTableModule,
      MatGridListModule,
+     MatMenuModule,
      MatToolbarModule,
      MatInputModule,
    MatTableModule,
@@ -86,6 +109,7 @@ MatProgressSpinnerModule,
      OktaAuthModule.initAuth(config)
   ],
   providers: [ExpenseService,EnvironmentService,GiphyService,  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }

@@ -3,7 +3,6 @@
 
 <div class="example-container mat-elevation-z8">
 
-<app-expenses-overview></app-expenses-overview>
 
 <app-expenses-search></app-expenses-search>
   <mat-paginator [length]="length"
@@ -13,8 +12,6 @@
   </mat-paginator>
 
   <mat-table #table [dataSource]="dataSource" matSort>
-
-
 
     <ng-container matColumnDef="giphyUrl">
       <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>

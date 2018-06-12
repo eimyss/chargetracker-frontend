@@ -25,7 +25,7 @@ overview : AccountOverview;
       this.overview.active = false;
       this.overview.countExpenses = 1;
       this.overview.total=0;
-      this.overview.refAccount= new AccountDTO();
+      this.overview.refAccount= new AccountDTO(1,"loading");
       this.overview.refAccount.name="loading"
     this.expenseService.getOverview().subscribe(data => {
       console.log('overview done');
