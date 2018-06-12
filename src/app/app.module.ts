@@ -65,7 +65,7 @@ const appRoutes: Routes = [
 
 const config = {
   issuer: 'https://dev-463008.oktapreview.com/oauth2/default',
-  redirectUri: 'http://' + window.location.hostname +':' +window.location.port +  '/implicit/callback',
+  redirectUri: 'http://' + "localhost"+':' +"4200" +  '/implicit/callback',
   clientId: '0oaepwz9ykeNaSuWK0h7'
 };
 

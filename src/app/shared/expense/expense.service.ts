@@ -34,7 +34,11 @@ export class ExpenseService {
   }
 
 	doExpenseSearch(name: string):  Observable<any> {
+      if (this.environment.backend_enabled) {
 	    return this.http.get(this.environment.API + '/expenses/search?name=' + name);
+    }  else {
+        return this.getMockedOverview();
+      }
 	}
 
   getMockedExpenses(): Observable<any> {
