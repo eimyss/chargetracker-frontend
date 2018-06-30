@@ -1,18 +1,39 @@
 <mat-card>
+
+
   <mat-card-header>
     <mat-card-title>Expenses Overview</mat-card-title>
     <mat-card-subtitle>For current Month</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content>
-
-  <table style="width:100%">
+  <mat-card-content >
+<mat-grid-list cols="2" rowHeight="2:1">
+ <mat-grid-tile>
+    <div>
+      <div>
+        <canvas baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+      </div>
+    <!--  <button (click)="randomize()">Update</button> -->
+    </div>
+</mat-grid-tile>
+  <mat-grid-tile >
+  <table >
+  <tr>
     <tr>
       <th>Is active:{{overview.active}} </th>
       <th>Total of expenses: {{overview.total}}</th>
       <th>Expenses Count:{{overview.countExpenses}} </th>
       <th>Account Name: {{overview.refAccount.name}} </th>
     </tr>
-    </table>
+      </table>
+</mat-grid-tile>
+</mat-grid-list>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button>Details..</button>

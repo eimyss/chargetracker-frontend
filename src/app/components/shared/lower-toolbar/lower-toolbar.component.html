@@ -1,0 +1,25 @@
+<mat-toolbar color="accent">
+
+    <button mat-button >Dashboard</button>
+
+    <button mat-button [matMenuTriggerFor]="menu">Accounts</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Konto 1</button>
+  <button mat-menu-item>Konto 2</button>
+</mat-menu>
+
+    <button mat-button >Statistics</button>
+
+    <div *ngIf="!isAuthenticated">
+      Here is reporing panel
+      Please login before proceed
+    </div>
+
+    <button mat-button *ngIf="isAuthenticated"
+            [routerLink]="['/calendar-overview']">Calendar
+    </button>
+
+    <button mat-button *ngIf="isAuthenticated"
+            [routerLink]="['/expense-list']">Expenses List
+    </button>
+</mat-toolbar>

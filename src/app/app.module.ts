@@ -15,10 +15,12 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/okta/auth.interceptor';
+import { ChartsModule } from 'ng2-charts';
 import { HomeComponent } from './home/home.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
 MatSortModule, MatTableModule } from "@angular/material";
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ExpensesOverviewComponent } from './expenses-overview/expenses-overview.component';
 import { ExpensesSearchComponent } from './expenses-search/expenses-search.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -31,6 +33,7 @@ import { CreateNewItemComponent } from './components/widgets/create-new-item/cre
 import { CalendarPage } from './pages/calendar-page/calendar-page.component';
 import { CalendarModule } from 'angular-calendar';
 import { DemoUtilsModule } from '../demo-utils/module';
+import { LowerToolbarComponent } from './components/shared/lower-toolbar/lower-toolbar.component';
 
 
 
@@ -81,12 +84,14 @@ const config = {
     ToolbarComponent,
     CashFlowComponent,
     CreateNewItemComponent,
-    CalendarPage
+    CalendarPage,
+    LowerToolbarComponent
   ],
   imports: [
     BrowserModule,
      HttpClientModule,
      DemoUtilsModule,
+     ChartsModule,
      BrowserAnimationsModule,
      ReactiveFormsModule,
     NgbModalModule.forRoot(),
@@ -97,6 +102,7 @@ const config = {
      MatTableModule,
      MatGridListModule,
      MatMenuModule,
+     MatDatepickerModule,
      MatToolbarModule,
      MatInputModule,
    MatTableModule,
