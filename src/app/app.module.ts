@@ -7,7 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { GiphyService } from './shared/giphy/giphy.service';
 import { ExpenseListComponent } from './expense-list/expense-list.component';
-import { MatButtonModule, MatCardModule, MatListModule, MatToolbarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExpenseEditComponent } from './expense-edit/expense-edit.component';
 import { FormsModule } from '@angular/forms';
@@ -19,8 +18,7 @@ import { ChartsModule } from 'ng2-charts';
 import { HomeComponent } from './home/home.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
-MatSortModule, MatTableModule } from "@angular/material";
-import {MatDatepickerModule} from '@angular/material/datepicker';
+MatSortModule, MatTableModule,MatDatepickerModule,MatNativeDateModule ,MatButtonModule, MatCardModule, MatListModule, MatToolbarModule,MatSelectModule} from "@angular/material";
 import { ExpensesOverviewComponent } from './expenses-overview/expenses-overview.component';
 import { ExpensesSearchComponent } from './expenses-search/expenses-search.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -34,6 +32,7 @@ import { CalendarPage } from './pages/calendar-page/calendar-page.component';
 import { CalendarModule } from 'angular-calendar';
 import { DemoUtilsModule } from '../demo-utils/module';
 import { LowerToolbarComponent } from './components/shared/lower-toolbar/lower-toolbar.component';
+import { CreatePageComponent } from './pages/create-page/create-page.component';
 
 
 
@@ -85,7 +84,8 @@ const config = {
     CashFlowComponent,
     CreateNewItemComponent,
     CalendarPage,
-    LowerToolbarComponent
+    LowerToolbarComponent,
+    CreatePageComponent
   ],
   imports: [
     BrowserModule,
@@ -99,10 +99,12 @@ const config = {
      MatButtonModule,
      MatCardModule,
      MatListModule,
+     MatSelectModule,
      MatTableModule,
      MatGridListModule,
      MatMenuModule,
      MatDatepickerModule,
+     MatNativeDateModule,
      MatToolbarModule,
      MatInputModule,
    MatTableModule,

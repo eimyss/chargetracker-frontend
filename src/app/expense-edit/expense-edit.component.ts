@@ -5,6 +5,15 @@ import { ExpenseService } from '../shared/expense/expense.service';
 import { GiphyService } from '../shared/giphy/giphy.service';
 import { NgForm } from '@angular/forms';
 
+export interface Type {
+  value: string;
+  viewValue: string;
+}
+export interface Account {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-expense-edit',
   templateUrl: './expense-edit.component.html',
@@ -12,7 +21,18 @@ import { NgForm } from '@angular/forms';
 })
 export class ExpenseEditComponent implements OnInit,OnDestroy {
   expense: any = {};
+   selected = 'true';
   sub: Subscription;
+  types: Type[] = [
+  {value: 'diesel', viewValue: 'Spritt'},
+  {value: 'essen', viewValue: 'Essen'},
+  {value: 'rauchen', viewValue: 'Zigaretten'}
+];
+accounts: Account[] = [
+{value: 'konto-1', viewValue: 'Privat'},
+{value: 'konto-2', viewValue: 'Business'},
+{value: 'konto-3', viewValue: 'Spar Konto'}
+];
 
  constructor(private route: ActivatedRoute,
              private router: Router,
@@ -57,5 +77,9 @@ export class ExpenseEditComponent implements OnInit,OnDestroy {
       this.gotoList();
     }, error => console.error(error));
   }
+
+  switchAbrechnung() {
+    console.log(this.selected);
+ }
 
 }

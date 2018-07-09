@@ -1,15 +1,62 @@
+<div >
+
 <mat-card>
   <form #expenseForm="ngForm" (ngSubmit)="save(expenseForm.value)">
     <mat-card-header>
-      <mat-card-title><h2>{{expense.name ? 'Edit' : 'Add'}} Car</h2></mat-card-title>
+      <mat-card-title><h2>{{expense.name ? 'Edit' : 'Add'}} Expense</h2></mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <input type="hidden" name="href" [(ngModel)]="expense.href">
+      <p>
       <mat-form-field>
-        <input matInput placeholder="Car Name" [(ngModel)]="expense.name"
+        <input matInput placeholder="Expense Name" [(ngModel)]="expense.name"
                required name="name" #name>
       </mat-form-field>
+
+      </p>
+      <p>
+  <mat-form-field>
+      <input matInput type="number" placeholder="Expense Betrag" [(ngModel)]="expense.betrag"
+             required name="Betrag" #name>
+    </mat-form-field>
+    </p>
+    <p>
+<mat-form-field>
+      <mat-label>abrechenbar?</mat-label>
+    <mat-select value="true" (selectionChange)="switchAbrechnung()" [(value)]="selected">
+      <mat-option value="true">abrechenbar</mat-option>
+      <mat-option value="false">Nicht abrechenbar</mat-option>
+    </mat-select>
+    </mat-form-field>
+</p>
+<p>
+    <mat-form-field>
+  <mat-select placeholder="Expense Type">
+    <mat-option *ngFor="let type of types" [value]="type.value">
+      {{type.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+</p>
+<p>
+<mat-form-field>
+<mat-select placeholder="Account">
+<mat-option *ngFor="let account of accounts" [value]="account.value">
+  {{account.viewValue}}
+</mat-option>
+</mat-select>
+</mat-form-field>
+</p>
+<p>
+<mat-form-field>
+  <input matInput [matDatepicker]="picker" placeholder="Expense Datum">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+</p>
     </mat-card-content>
+
+        <p>Expensed?: {{selected}}</p>
     <mat-card-actions>
       <button mat-raised-button color="primary" type="submit"
               [disabled]="!expenseForm.form.valid">Save</button>
@@ -24,3 +71,5 @@
     </mat-card-footer>
   </form>
 </mat-card>
+
+</div>
