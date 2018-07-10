@@ -2,5 +2,10 @@ export class Expense {
   id: number;
   name: string;
   betrag: number;
-  ort: String;
+  ort: string;
+  href: string;
+  expensable: boolean;
+  type: string;
+  account: string;
+  date: string;
 }

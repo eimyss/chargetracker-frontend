@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ExpenseService } from '../shared/expense/expense.service';
 import { GiphyService } from '../shared/giphy/giphy.service';
 import { NgForm } from '@angular/forms';
+import { Expense } from '../shared/dto/expense';
 
 export interface Type {
   value: string;
@@ -19,20 +20,28 @@ export interface Account {
   templateUrl: './expense-edit.component.html',
   styleUrls: ['./expense-edit.component.css']
 })
+
+
+
 export class ExpenseEditComponent implements OnInit,OnDestroy {
-  expense: any = {};
-   selected = 'true';
-  sub: Subscription;
+  // TODO replace with backend
   types: Type[] = [
   {value: 'diesel', viewValue: 'Spritt'},
   {value: 'essen', viewValue: 'Essen'},
   {value: 'rauchen', viewValue: 'Zigaretten'}
-];
-accounts: Account[] = [
-{value: 'konto-1', viewValue: 'Privat'},
-{value: 'konto-2', viewValue: 'Business'},
-{value: 'konto-3', viewValue: 'Spar Konto'}
-];
+  ];
+  accounts: Account[] = [
+  {value: 'konto-1', viewValue: 'Privat'},
+  {value: 'konto-2', viewValue: 'Business'},
+  {value: 'konto-3', viewValue: 'Spar Konto'}
+  ];
+
+
+// WTF Its like Java....
+  expense: Expense = new Expense();
+
+  selected = 'true';
+  sub: Subscription;
 
  constructor(private route: ActivatedRoute,
              private router: Router,
@@ -66,8 +75,9 @@ accounts: Account[] = [
     this.router.navigate(['/expense-list']);
   }
 
-  save(form: NgForm) {
-    this.expenseService.save(form).subscribe(result => {
+  save() {
+    this.expenseService.save(this.expense).subscribe(result => {
+      console.log('saving: ' + this.expense)
       this.gotoList();
     }, error => console.error(error));
   }

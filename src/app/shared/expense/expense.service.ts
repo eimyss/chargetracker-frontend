@@ -5,6 +5,7 @@ import { map, delay, catchError } from 'rxjs/operators';
 import { EnvironmentService} from '../environment/environment.service'
 import {expenses} from '../mock/mock-expenses'
 import {MockedOverview} from '../mock/mock-overview'
+import { Expense } from '../dto/expense';
 
 @Injectable()
 export class ExpenseService {
@@ -55,13 +56,24 @@ return of(MockedOverview);
     return this.http.get(this.environment.EXPENSE_API + '/' + id);
   }
 
-  save(expense: any): Observable<any> {
+  save(expense: Expense): Observable<any> {
     let result: Observable<Object>;
-    if (expense['href']) {
-      result = this.http.put(expense.href, expense);
-    } else {
-      result = this.http.post(this.environment.EXPENSE_API, expense);
-    }
+    console.log('saving:' + expense);
+
+        if (this.environment.backend_enabled) {
+          if (expense['href']) {
+            result = this.http.put(expense.href, expense);
+          } else {
+            result = this.http.post(this.environment.EXPENSE_API, expense);
+          }
+        }else {
+          console.log('expenses size before: ' + expenses.length);
+          // we need to add fake ID
+          expense.id = expenses.length + 1;
+          result = of(expenses.push(expense));
+          console.log('expenses size after: ' + expenses.length);
+        }
+
     return result;
   }
 

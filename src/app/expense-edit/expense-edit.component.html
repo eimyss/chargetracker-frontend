@@ -1,16 +1,22 @@
 <div >
 
 <mat-card>
-  <form #expenseForm="ngForm" (ngSubmit)="save(expenseForm.value)">
+  <form #expenseForm="ngForm" (ngSubmit)="save()">
     <mat-card-header>
       <mat-card-title><h2>{{expense.name ? 'Edit' : 'Add'}} Expense</h2></mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <input type="hidden" name="href" [(ngModel)]="expense.href">
       <p>
       <mat-form-field>
         <input matInput placeholder="Expense Name" [(ngModel)]="expense.name"
                required name="name" #name>
+      </mat-form-field>
+
+      </p>
+      <p>
+      <mat-form-field>
+        <input matInput placeholder="Expense Ort" [(ngModel)]="expense.ort"
+               required name="ort" #name>
       </mat-form-field>
 
       </p>
@@ -23,7 +29,7 @@
     <p>
 <mat-form-field>
       <mat-label>abrechenbar?</mat-label>
-    <mat-select value="true" (selectionChange)="switchAbrechnung()" [(value)]="selected">
+    <mat-select value="true" (selectionChange)="switchAbrechnung()" [(value)]="expense.expensable">
       <mat-option value="true">abrechenbar</mat-option>
       <mat-option value="false">Nicht abrechenbar</mat-option>
     </mat-select>
@@ -31,7 +37,7 @@
 </p>
 <p>
     <mat-form-field>
-  <mat-select placeholder="Expense Type">
+  <mat-select placeholder="Expense Type" [(ngModel)]="expense.type" name="type">
     <mat-option *ngFor="let type of types" [value]="type.value">
       {{type.viewValue}}
     </mat-option>
@@ -40,7 +46,7 @@
 </p>
 <p>
 <mat-form-field>
-<mat-select placeholder="Account">
+<mat-select placeholder="Account" [(ngModel)]="expense.account" name="account">
 <mat-option *ngFor="let account of accounts" [value]="account.value">
   {{account.viewValue}}
 </mat-option>
@@ -49,9 +55,9 @@
 </p>
 <p>
 <mat-form-field>
-  <input matInput [matDatepicker]="picker" placeholder="Expense Datum">
+  <input matInput [matDatepicker]="picker" placeholder="Expense Datum"  [(ngModel)]="expense.date" name="date">
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
+  <mat-datepicker #picker ></mat-datepicker>
 </mat-form-field>
 </p>
     </mat-card-content>
