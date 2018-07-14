@@ -7,5 +7,6 @@ export class Expense {
   expensable: boolean;
   type: string;
   account: string;
+  giphyUrl: string;
   date: string;
 }
