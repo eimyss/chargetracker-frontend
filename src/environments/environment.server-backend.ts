@@ -1,3 +1,6 @@
 export const environment = {
-  production: true
+  production: false,
+  title: 'Eimantas - Server Backend',
+  API: 'http://java-1.eimantas.server:8081',
+  backend: true
 };

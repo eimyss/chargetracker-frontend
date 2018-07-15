@@ -59,12 +59,12 @@ return of(MockedOverview);
   save(expense: Expense): Observable<any> {
     let result: Observable<Object>;
     console.log('saving:' + expense);
-
         if (this.environment.backend_enabled) {
           if (expense['href']) {
             result = this.http.put(expense.href, expense);
           } else {
-            result = this.http.post(this.environment.EXPENSE_API, expense);
+            console.log('saving new expese');
+            result = this.http.post(this.environment.SAVE_EXPENSES_API, expense);
           }
         }else {
           console.log('expenses size before: ' + expenses.length);

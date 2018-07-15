@@ -79,7 +79,7 @@ export class ExpenseEditComponent implements OnInit,OnDestroy {
     this.expenseService.save(this.expense).subscribe(result => {
       console.log('saving: ' + this.expense)
       this.gotoList();
-    }, error => console.error(error));
+    }, error => console.log(error));
   }
 
   remove(href) {

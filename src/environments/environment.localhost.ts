@@ -1,5 +1,6 @@
 export const environment = {
-  production: true,
+  production: false,
+  title: 'Eimantas - localhost backend',
   API: 'http://localhost:8081',
     backend: true
 };

@@ -7,6 +7,7 @@ import { environment } from '../../../environments/environment';
 export class EnvironmentService {
   public API = environment.API;
   public EXPENSE_API = this.API + '/open-expenses';
+  public SAVE_EXPENSES_API = this.API + '/save';
   public backend_enabled = environment.backend;
   public title = environment.title;
 
