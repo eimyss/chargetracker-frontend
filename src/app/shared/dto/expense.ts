@@ -8,5 +8,6 @@ export class Expense {
   type: string;
   account: string;
   giphyUrl: string;
-  date: string;
+  createDate: string;
+  expenseDate: string;
 }
