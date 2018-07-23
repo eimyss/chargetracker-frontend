@@ -1,0 +1,43 @@
+@import "~@angular/material/theming";
+
+$primaryPalette: mat-palette($mat-indigo);
+$accentPalette:  mat-palette($mat-pink, A200, A100, A400);
+
+$warnPalette:    mat-palette($mat-red);
+
+
+.my-primary-text {
+    color: mat-color($primaryPalette);
+}
+
+.my-accent-text {
+    color: mat-color($accentPalette);
+    padding: 20px;
+    vertical-align: middle;
+      text-align: center;
+}
+
+
+.full-page {
+min-width: 50%;
+max-height: 50%;
+}
+
+.centered {
+  text-align: center;
+}
+
+.padded {
+  padding: 20px;
+  vertical-align: middle;
+    text-align: center;
+    color: red;
+}
+
+
+.table-spanned {
+  colspan: 5px;
+  rowspan: 5px;
+  padding: 10px;
+  vertical-align: middle;
+}

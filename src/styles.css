@@ -1,7 +1,9 @@
 @import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
-/* angular-cli file: src/styles.css */
+
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
+
+
 
 body {
  margin: 0;
