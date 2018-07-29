@@ -33,6 +33,7 @@ import { CalendarModule } from 'angular-calendar';
 import { DemoUtilsModule } from '../demo-utils/module';
 import { LowerToolbarComponent } from './components/shared/lower-toolbar/lower-toolbar.component';
 import { CreatePageComponent } from './pages/create-page/create-page.component';
+import { TestingComponent } from './components/shared/testing/testing.component';
 
 
 
@@ -51,6 +52,10 @@ const appRoutes: Routes = [
    path: 'home',
    component: HomeComponent
  },
+ {
+  path: 'testing',
+  component: TestingComponent
+},
  {
   path: 'calendar-overview',
   component: CalendarPage
@@ -85,7 +90,8 @@ const config = {
     CreateNewItemComponent,
     CalendarPage,
     LowerToolbarComponent,
-    CreatePageComponent
+    CreatePageComponent,
+    TestingComponent
   ],
   imports: [
     BrowserModule,

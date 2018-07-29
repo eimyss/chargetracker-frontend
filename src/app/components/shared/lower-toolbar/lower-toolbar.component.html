@@ -20,6 +20,11 @@
     </button>
 
     <button mat-button *ngIf="isAuthenticated"
+            [routerLink]="['/testing']">Testing
+    </button>
+
+
+    <button mat-button *ngIf="isAuthenticated"
             [routerLink]="['/expense-list']">Expenses List
     </button>
 </mat-toolbar>

@@ -24,6 +24,14 @@ export class ExpenseService {
   }
 
 
+  performTest(url: string): Observable<any> {
+    if (this.environment.backend_enabled) {
+          return this.http.get(this.environment.API + url);
+    }
+
+  }
+
+
   getOverview(): Observable<any> {
 
     if (this.environment.backend_enabled) {
