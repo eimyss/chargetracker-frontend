@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  title: 'eimantas expenses',
-  API: 'http://java-1.eimantas.server:8081',
+  title: 'eimantas expenses (default)',
+  API: 'http://java-2.eimantas.server:8081',
     backend: true
 };
