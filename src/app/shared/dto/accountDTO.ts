@@ -11,8 +11,5 @@ export class AccountDTO {
   expireDate: Date;
   user: UserDTO;
 
-  constructor(id: number, name: string) {
-    this.id = id;
-    this.name = name;
-  }
+
 }

@@ -35,7 +35,8 @@ import { LowerToolbarComponent } from './components/shared/lower-toolbar/lower-t
 import { CreatePageComponent } from './pages/create-page/create-page.component';
 import { TestingComponent } from './components/shared/testing/testing.component';
 import { AccountDetailedComponent } from './pages/accounts/account-detailed/account-detailed.component';
-
+import { environment } from '../environments/environment';
+import { AccountService } from './shared/service/account.service';
 
 
 const appRoutes: Routes = [
@@ -53,6 +54,10 @@ const appRoutes: Routes = [
    path: 'home',
    component: HomeComponent
  },
+ {
+  path: 'account/create',
+  component: AccountDetailedComponent
+},
  {
   path: 'testing',
   component: TestingComponent
@@ -73,7 +78,7 @@ const appRoutes: Routes = [
 
 const config = {
   issuer: 'https://dev-463008.oktapreview.com/oauth2/default',
-  redirectUri: 'http://' + "java-2.eimantas.server"+':' +"80" +  '/implicit/callback',
+  redirectUri: 'http://' + environment.clienturl +  '/implicit/callback',
   clientId: '0oaepwz9ykeNaSuWK0h7'
 };
 
@@ -124,7 +129,7 @@ MatProgressSpinnerModule,
   RouterModule.forRoot(appRoutes),
      OktaAuthModule.initAuth(config)
   ],
-  providers: [ExpenseService,EnvironmentService,GiphyService,  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [ExpenseService,AccountService,EnvironmentService,GiphyService,  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent],
 
 })

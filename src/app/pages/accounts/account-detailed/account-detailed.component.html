@@ -1,3 +1,49 @@
-<p>
-  account-detailed works!
+<div >
+
+<mat-card>
+  <form #accountForm="ngForm" (ngSubmit)="save()">
+    <mat-card-header>
+      <mat-card-title><h2>{{account.id ? 'Edit' : 'Add'}} Account</h2></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+      <mat-form-field>
+        <input matInput placeholder="Account Name" [(ngModel)]="account.name"
+               required name="name" #name>
+      </mat-form-field>
+
+      </p>
+      <p>
+      <mat-form-field>
+        <input matInput placeholder="Bank" [(ngModel)]="account.bank"
+               required name="bank" #name>
+      </mat-form-field>
+
+      </p>
+
+    <p>
+<mat-form-field>
+      <mat-label>Business Account?</mat-label>
+    <mat-select value="true" [(value)]="account.businessAccount">
+      <mat-option value="true">Business</mat-option>
+      <mat-option value="false">Privat</mat-option>
+    </mat-select>
+    </mat-form-field>
 </p>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit"
+              [disabled]="!accountForm.form.valid">Save</button>
+      <button mat-raised-button color="secondary" (click)="delete(account.id)"
+              *ngIf="account.id" type="button">Delete</button>
+      <a mat-button routerLink="/expense-list">Cancel</a>
+    </mat-card-actions>
+    <mat-card-footer>
+  <div> footer test </div>
+    </mat-card-footer>
+  </form>
+</mat-card>
+
+</div>
