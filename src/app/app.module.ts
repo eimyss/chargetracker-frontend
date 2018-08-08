@@ -34,6 +34,7 @@ import { DemoUtilsModule } from '../demo-utils/module';
 import { LowerToolbarComponent } from './components/shared/lower-toolbar/lower-toolbar.component';
 import { CreatePageComponent } from './pages/create-page/create-page.component';
 import { TestingComponent } from './components/shared/testing/testing.component';
+import { AccountDetailedComponent } from './pages/accounts/account-detailed/account-detailed.component';
 
 
 
@@ -91,7 +92,8 @@ const config = {
     CalendarPage,
     LowerToolbarComponent,
     CreatePageComponent,
-    TestingComponent
+    TestingComponent,
+    AccountDetailedComponent
   ],
   imports: [
     BrowserModule,
