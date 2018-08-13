@@ -15,13 +15,10 @@ export class AccountService {
   constructor(private http: HttpClient,private environment: EnvironmentService) {
   }
 
-  getAll(): Observable<any> {
+  getAllAccounts(): Observable<any> {
     if (this.environment.backend_enabled) {
-          return this.http.get(this.environment.API + '/open-expenses');
-    } else {
-      return this.getMockedExpenses();
+          return this.http.get(this.environment.ACCOUNT_API + '/list');
     }
-
   }
 
 

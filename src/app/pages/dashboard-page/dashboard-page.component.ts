@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountCacheService } from '../../shared/service/cache/account-cache.service';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private accountcache: AccountCacheService) { }
 
   ngOnInit() {
+    console.log('cache service say: ' + this.accountcache.getAccountList());
   }
 
 }

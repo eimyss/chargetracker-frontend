@@ -4,8 +4,9 @@
 
     <button mat-button [matMenuTriggerFor]="menu">Accounts</button>
 <mat-menu #menu="matMenu">
-  <button mat-menu-item>Konto 1</button>
-  <button mat-menu-item>Konto 2</button>
+  <button mat-menu-item *ngFor="let account of accountList" [value]="account.id">
+       {{account.name}}
+     </button>
 </mat-menu>
 
     <button mat-button >Statistics</button>
