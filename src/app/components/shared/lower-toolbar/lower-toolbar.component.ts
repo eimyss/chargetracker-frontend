@@ -17,6 +17,8 @@ export class LowerToolbarComponent implements OnInit {
   }
 
   async ngOnInit() {
+      console.log('keylocak is loggedin: ' + this.keycloack.isLoggedIn());
+      this.isAuthenticated = this.keycloack.isLoggedIn();
       this.accountList = this.accountcache.getAccountList();
   }
 }
