@@ -1,0 +1,6 @@
+{
+  "realm": "expenses",
+  "auth-server-url": "http://java-3.eimantas.server:8180/auth",
+  "resource": "expenses-app",
+  "public-client": true
+}

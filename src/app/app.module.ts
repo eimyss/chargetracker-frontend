@@ -37,6 +37,7 @@ import { TestingComponent } from './components/shared/testing/testing.component'
 import { AccountDetailedComponent } from './pages/accounts/account-detailed/account-detailed.component';
 import { environment } from '../environments/environment';
 import { AccountService } from './shared/service/account.service';
+import { KeycloakService } from './shared/service/keycloack.service';
 
 
 const appRoutes: Routes = [
@@ -129,7 +130,7 @@ MatProgressSpinnerModule,
   RouterModule.forRoot(appRoutes),
      OktaAuthModule.initAuth(config)
   ],
-  providers: [ExpenseService,AccountService,EnvironmentService,GiphyService,  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [KeycloakService,ExpenseService,AccountService,EnvironmentService,GiphyService,  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent],
 
 })
