@@ -11,7 +11,7 @@ export class KeycloakService {
   static init(): Promise<any> {
 
     let keycloakAuth: any = new Keycloak({
-        url: 'http://java-3.eimantas.server:8180/auth',
+        url: 'http://192.168.123.157:8180/auth',
         realm: 'expenses',
         clientId: 'expenses-app'
     });
