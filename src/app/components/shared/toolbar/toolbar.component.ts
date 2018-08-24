@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OktaAuthService } from '@okta/okta-angular';
 import { EnvironmentService } from '../../../shared/environment/environment.service';
+import { KeycloakService } from '../../../shared/service/keycloack.service';
 
 
 @Component({
@@ -14,15 +14,14 @@ export class ToolbarComponent implements OnInit {
   isAuthenticated: boolean;
 
 
-  constructor(private oktaAuth: OktaAuthService, private env: EnvironmentService) { }
+  constructor(private keycloack: KeycloakService, private env: EnvironmentService) { }
 
   async ngOnInit() {
-    this.isAuthenticated = await this.oktaAuth.isAuthenticated();
+
     this.title = this.env.title;
-    // Subscribe to authentication state changes
-    this.oktaAuth.$authenticationState.subscribe(
-      (isAuthenticated: boolean)  => this.isAuthenticated = isAuthenticated
-    );
+
+    console.log('keylocak is loggedin: ' + this.keycloack.isLoggedIn());
+    this.isAuthenticated = await this.keycloack.isLoggedIn();
   }
 
 }

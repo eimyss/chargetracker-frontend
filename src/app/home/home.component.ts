@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { OktaAuthService } from '@okta/okta-angular';
 import { KeycloakService } from '../shared/service/keycloack.service';
 
 @Component({
@@ -14,11 +13,8 @@ export class HomeComponent implements OnInit {
   }
 
   async ngOnInit() {
-    KeycloakService.init().then(() => {
-      console.log('init okay');
-      this.isAuthenticated = true;
-      })
-    .catch(err => console.log('init not okay', err));
+    console.log('keylocak is loggedin: ' + this.keycloack.isLoggedIn());
+    this.isAuthenticated = this.keycloack.isLoggedIn();
   }
 
 

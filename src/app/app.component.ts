@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OktaAuthService } from '@okta/okta-angular';
+import { KeycloakService } from './shared/service/keycloack.service';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +10,10 @@ export class AppComponent {
   title = 'app';
   isAuthenticated: boolean;
 
- constructor(private oktaAuth: OktaAuthService) {
+ constructor(private keycloack: KeycloakService) {
  }
- async ngOnInit() {
-   this.isAuthenticated = await this.oktaAuth.isAuthenticated();
-   // Subscribe to authentication state changes
-   this.oktaAuth.$authenticationState.subscribe(
-     (isAuthenticated: boolean)  => this.isAuthenticated = isAuthenticated
-   );
+ ngOnInit() {
+   console.log('keylocak is loggedin: ' + this.keycloack.isLoggedIn());
+   this.isAuthenticated = this.keycloack.isLoggedIn();
  }
 }

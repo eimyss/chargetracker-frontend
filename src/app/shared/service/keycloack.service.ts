@@ -1,5 +1,6 @@
 
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 declare var Keycloak: any;
 
@@ -43,6 +44,11 @@ export class KeycloakService {
   isLoggedIn(): boolean {
     return KeycloakService.auth.loggedIn;
   }
+
+  isLogged(): Observable<boolean> {
+    return KeycloakService.auth.loggedIn;
+  }
+
 
   getToken(): Promise<string> {
     return new Promise<string>((resolve, reject) => {

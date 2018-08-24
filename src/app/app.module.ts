@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { OktaCallbackComponent, OktaAuthModule } from '@okta/okta-angular';
 import { ExpenseService } from './shared/expense/expense.service';
 import { EnvironmentService } from './shared/environment/environment.service';
 import { HttpClientModule } from '@angular/common/http';

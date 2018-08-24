@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { OktaAuthService } from '@okta/okta-angular';
 import { AccountCacheService } from '../../../shared/service/cache/account-cache.service';
 import { AccountDTO } from '../../../shared/dto/accountDTO';
 import { KeycloakService } from '../../../shared/service/keycloack.service';

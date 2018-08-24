@@ -22,5 +22,11 @@ if (environment.backend )  {
   //  })
 //  .catch(err => console.log(err));
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-.catch(err => console.log(err));
+
+
+   KeycloakService.init().then(() => {
+     console.log('init okay');
+     platformBrowserDynamic().bootstrapModule(AppModule)
+     .catch(err => console.log(err));
+     })
+   .catch(err => console.log('init not okay', err));
