@@ -70,18 +70,9 @@ const appRoutes: Routes = [
   {
     path: 'expense-edit/:id',
     component: ExpenseEditComponent
-  },
-  {
-   path: 'implicit/callback',
-   component: OktaCallbackComponent
- }
+  }
 ];
 
-const config = {
-  issuer: 'https://dev-463008.oktapreview.com/oauth2/default',
-  redirectUri: 'http://' + environment.clienturl +  '/implicit/callback',
-  clientId: '0oaepwz9ykeNaSuWK0h7'
-};
 
 @NgModule({
   declarations: [
@@ -127,8 +118,7 @@ const config = {
    MatSortModule,
 MatProgressSpinnerModule,
      FormsModule,
-  RouterModule.forRoot(appRoutes),
-     OktaAuthModule.initAuth(config)
+  RouterModule.forRoot(appRoutes)
   ],
   providers: [KeycloakService,ExpenseService,AccountService,EnvironmentService,GiphyService,  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent],
