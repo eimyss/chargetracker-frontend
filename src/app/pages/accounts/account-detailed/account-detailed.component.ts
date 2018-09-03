@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountDTO } from '../../../shared/dto/accountDTO'
 import { AccountService } from '../../../shared/service/account.service';
+import { AccountCacheService } from '../../../shared/service/cache/account-cache.service';
 
 @Component({
   selector: 'app-account-detailed',
@@ -11,7 +12,7 @@ export class AccountDetailedComponent implements OnInit {
 
   account: AccountDTO = new AccountDTO();
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountCacheService) { }
 
   ngOnInit() {
   }

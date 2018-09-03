@@ -16,7 +16,7 @@ export class ExpenseService {
 
   getAll(): Observable<any> {
     if (this.environment.backend_enabled) {
-          return this.http.get(this.environment.API + '/open-expenses');
+          return this.http.get(this.environment.API + '/expenses/all');
     } else {
       return this.getMockedExpenses();
     }

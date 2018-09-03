@@ -46,9 +46,9 @@
 </p>
 <p>
 <mat-form-field>
-<mat-select placeholder="Account" [(ngModel)]="expense.account" name="account">
-<mat-option *ngFor="let account of accounts" [value]="account.value">
-  {{account.viewValue}}
+<mat-select placeholder="Account" [(ngModel)]="expense.accountid" name="account">
+<mat-option *ngFor="let account of accounts" [value]="account.id">
+  {{account.name}}
 </mat-option>
 </mat-select>
 </mat-form-field>

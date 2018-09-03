@@ -5,15 +5,14 @@ import { ExpenseService } from '../shared/expense/expense.service';
 import { GiphyService } from '../shared/giphy/giphy.service';
 import { NgForm } from '@angular/forms';
 import { Expense } from '../shared/dto/expense';
+import { AccountCacheService } from '../shared/service/cache/account-cache.service';
+import { AccountDTO } from '../shared/dto/accountDTO';
 
 export interface Type {
   value: string;
   viewValue: string;
 }
-export interface Account {
-  value: string;
-  viewValue: string;
-}
+
 
 @Component({
   selector: 'app-expense-edit',
@@ -30,11 +29,7 @@ export class ExpenseEditComponent implements OnInit,OnDestroy {
   {value: 'essen', viewValue: 'Essen'},
   {value: 'rauchen', viewValue: 'Zigaretten'}
   ];
-  accounts: Account[] = [
-  {value: 'konto-1', viewValue: 'Privat'},
-  {value: 'konto-2', viewValue: 'Business'},
-  {value: 'konto-3', viewValue: 'Spar Konto'}
-  ];
+  accounts: AccountDTO[] = [];
 
 
 // WTF Its like Java....
@@ -45,6 +40,7 @@ export class ExpenseEditComponent implements OnInit,OnDestroy {
 
  constructor(private route: ActivatedRoute,
              private router: Router,
+             private accuntCache: AccountCacheService,
              private expenseService: ExpenseService,
              private giphyService: GiphyService) {
  }
@@ -65,6 +61,7 @@ export class ExpenseEditComponent implements OnInit,OnDestroy {
       });
     }
   });
+    this.accounts = this.accuntCache.getAccountList();
   }
   ngOnDestroy() {
   this.sub.unsubscribe();
@@ -76,6 +73,8 @@ export class ExpenseEditComponent implements OnInit,OnDestroy {
   }
 
   save() {
+
+
     this.expenseService.save(this.expense).subscribe(result => {
       console.log('saving: ' + this.expense)
       this.gotoList();

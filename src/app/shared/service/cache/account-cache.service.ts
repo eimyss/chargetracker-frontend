@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AccountService } from '../account.service';
 import { AccountDTO } from '../../dto/accountDTO';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,15 @@ getTest(): string {
 return 'seting storage';
 }
 
+  save(account: AccountDTO): Observable<any> {
+    return this.accountService.save(account);
+  }
+
+
+refreshCache() {
+  localStorage.removeItem('accounts');
+  this.getAccountList();
+}
 getAccountList(): AccountDTO[] {
 
 if (localStorage.getItem('accounts') == null) {
