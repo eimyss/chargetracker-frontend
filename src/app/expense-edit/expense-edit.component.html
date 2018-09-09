@@ -37,7 +37,7 @@
 </p>
 <p>
     <mat-form-field>
-  <mat-select placeholder="Expense Type" [(ngModel)]="expense.type" name="type">
+  <mat-select placeholder="Expense Type" [(ngModel)]="expense.category" name="type">
     <mat-option *ngFor="let type of types" [value]="type">
       {{type}}
     </mat-option>

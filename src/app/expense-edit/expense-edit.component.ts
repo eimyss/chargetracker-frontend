@@ -42,8 +42,8 @@ export class ExpenseEditComponent implements OnInit, OnDestroy {
         this.expenseService.get(id).subscribe((expense: any) => {
           if (expense) {
             this.expense = expense;
-            this.expense.href = expense._links.self.href;
-            this.giphyService.get(expense.name).subscribe(url => expense.giphyUrl = url);
+            this.expense.href = expense.id;
+      //      this.giphyService.get(expense.name).subscribe(url => expense.giphyUrl = url);
           } else {
             console.log(`Expense with id '${id}' not found, returning to list`);
             this.gotoList();

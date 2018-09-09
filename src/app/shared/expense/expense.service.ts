@@ -73,7 +73,7 @@ return of(MockedOverview);
 
 
   get(id: string) {
-    return this.http.get(this.environment.EXPENSE_API + '/' + id);
+    return this.http.get(this.environment.EXPENSE_API + '/get/' + id);
   }
 
   save(expense: Expense): Observable<any> {

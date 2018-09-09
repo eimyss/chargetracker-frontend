@@ -5,8 +5,8 @@ export class Expense {
   ort: string;
   href: string;
   expensable: boolean;
-  type: string;
   account: string;
+  category: string;
   accountId: number;
   giphyUrl: string;
   createDate: string;
