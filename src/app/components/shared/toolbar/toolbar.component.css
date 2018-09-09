@@ -1,5 +1,6 @@
 .right {
     position:absolute;
     right:0;
+    padding: 2px;
     margin: 4px;
 }

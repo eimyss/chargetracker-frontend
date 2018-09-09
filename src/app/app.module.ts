@@ -15,16 +15,18 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/okta/auth.interceptor';
 import { ChartsModule } from 'ng2-charts';
 import { HomeComponent } from './home/home.component';
-import {MatGridListModule} from '@angular/material/grid-list';
-import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
-MatSortModule, MatTableModule,MatDatepickerModule,MatNativeDateModule ,MatButtonModule, MatCardModule, MatListModule, MatToolbarModule,MatSelectModule} from "@angular/material";
+import { MatGridListModule } from '@angular/material/grid-list';
+import {
+  MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
+  MatSortModule, MatTableModule, MatDatepickerModule, MatNativeDateModule, MatButtonModule, MatCardModule, MatListModule, MatToolbarModule, MatSelectModule
+} from "@angular/material";
 import { ExpensesOverviewComponent } from './expenses-overview/expenses-overview.component';
 import { ExpensesSearchComponent } from './expenses-search/expenses-search.component';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { ToolbarComponent } from './components/shared/toolbar/toolbar.component';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { CashFlowComponent } from './components/widgets/cash-flow/cash-flow.component';
 import { CreateNewItemComponent } from './components/widgets/create-new-item/create-new-item.component';
 import { CalendarPage } from './pages/calendar-page/calendar-page.component';
@@ -37,10 +39,12 @@ import { AccountDetailedComponent } from './pages/accounts/account-detailed/acco
 import { environment } from '../environments/environment';
 import { AccountService } from './shared/service/account.service';
 import { KeycloakService } from './shared/service/keycloack.service';
+import { BackendInfoPageComponent } from './pages/admin/backend-info-page/backend-info-page.component';
+import { BackendInfoServiceService } from './shared/service/backend/backend-info-service.service';
 
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 
   {
     path: 'expense-list',
@@ -51,21 +55,25 @@ const appRoutes: Routes = [
     component: ExpenseEditComponent
   },
   {
-   path: 'home',
-   component: HomeComponent
- },
- {
-  path: 'account/create',
-  component: AccountDetailedComponent
-},
- {
-  path: 'testing',
-  component: TestingComponent
-},
- {
-  path: 'calendar-overview',
-  component: CalendarPage
-},
+    path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: 'backend/info',
+    component: BackendInfoPageComponent
+  },
+  {
+    path: 'account/create',
+    component: AccountDetailedComponent
+  },
+  {
+    path: 'testing',
+    component: TestingComponent
+  },
+  {
+    path: 'calendar-overview',
+    component: CalendarPage
+  },
   {
     path: 'expense-edit/:id',
     component: ExpenseEditComponent
@@ -89,37 +97,39 @@ const appRoutes: Routes = [
     LowerToolbarComponent,
     CreatePageComponent,
     TestingComponent,
-    AccountDetailedComponent
+    AccountDetailedComponent,
+    BackendInfoPageComponent
   ],
   imports: [
     BrowserModule,
-     HttpClientModule,
-     DemoUtilsModule,
-     ChartsModule,
-     BrowserAnimationsModule,
-     ReactiveFormsModule,
+    HttpClientModule,
+    DemoUtilsModule,
+    ChartsModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
     NgbModalModule.forRoot(),
-     CalendarModule.forRoot(),
-     MatButtonModule,
-     MatCardModule,
-     MatListModule,
-     MatSelectModule,
-     MatTableModule,
-     MatGridListModule,
-     MatMenuModule,
-     MatDatepickerModule,
-     MatNativeDateModule,
-     MatToolbarModule,
-     MatInputModule,
-   MatTableModule,
-   MatAutocompleteModule,
-   MatPaginatorModule,
-   MatSortModule,
-MatProgressSpinnerModule,
-     FormsModule,
-  RouterModule.forRoot(appRoutes)
+    CalendarModule.forRoot(),
+    MatButtonModule,
+    MatCardModule,
+    MatListModule,
+    MatSelectModule,
+    MatTableModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatTableModule,
+    MatAutocompleteModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [KeycloakService,ExpenseService,AccountService,EnvironmentService,GiphyService,  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [KeycloakService, ExpenseService, AccountService,BackendInfoServiceService, EnvironmentService, GiphyService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+
   bootstrap: [AppComponent],
 
 })

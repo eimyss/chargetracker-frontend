@@ -1,0 +1,26 @@
+<p>
+Please select what you want!
+<button mat-flat-button color="accent">Refresh</button>
+</p>
+
+<p>
+<button mat-flat-button color="accent" *ngFor="let key of keys" (click)="getInfo(key)" [value]="key">
+  {{key}}
+</button>
+
+</p>
+<p>
+Response
+</p>
+
+<p>
+  {{response}}
+</p>
+
+<p>
+  <mat-list>
+  <mat-list-item *ngFor="let respKey of responsekeys">
+    <h3> {{respKey}} </h3>
+  </mat-list-item>
+</mat-list>
+</p>
