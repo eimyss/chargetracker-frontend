@@ -18,7 +18,7 @@ import { HomeComponent } from './home/home.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {
   MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
-  MatSortModule, MatTableModule, MatDatepickerModule, MatNativeDateModule, MatButtonModule, MatCardModule, MatListModule, MatToolbarModule, MatSelectModule
+  MatSortModule, MatTableModule, MatDatepickerModule, MatNativeDateModule, MatButtonModule, MatCardModule, MatListModule, MatToolbarModule, MatSelectModule, MatSidenavModule, MatIconModule
 } from "@angular/material";
 import { ExpensesOverviewComponent } from './expenses-overview/expenses-overview.component';
 import { ExpensesSearchComponent } from './expenses-search/expenses-search.component';
@@ -41,6 +41,10 @@ import { AccountService } from './shared/service/account.service';
 import { KeycloakService } from './shared/service/keycloack.service';
 import { BackendInfoPageComponent } from './pages/admin/backend-info-page/backend-info-page.component';
 import { BackendInfoServiceService } from './shared/service/backend/backend-info-service.service';
+import { ExpensesNavigationComponent } from './expenses-navigation/expenses-navigation.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { ExpensesDashboardComponent } from './expenses-dashboard/expenses-dashboard.component';
+import { ExpesnsesTableComponent } from './expesnses-table/expesnses-table.component';
 
 
 const appRoutes: Routes = [
@@ -56,7 +60,11 @@ const appRoutes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: ExpensesDashboardComponent
+  },
+  {
+    path: 'table',
+    component: ExpesnsesTableComponent
   },
   {
     path: 'backend/info',
@@ -98,7 +106,10 @@ const appRoutes: Routes = [
     CreatePageComponent,
     TestingComponent,
     AccountDetailedComponent,
-    BackendInfoPageComponent
+    BackendInfoPageComponent,
+    ExpensesNavigationComponent,
+    ExpensesDashboardComponent,
+    ExpesnsesTableComponent
   ],
   imports: [
     BrowserModule,
@@ -126,7 +137,10 @@ const appRoutes: Routes = [
     MatSortModule,
     MatProgressSpinnerModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    LayoutModule,
+    MatSidenavModule,
+    MatIconModule
   ],
   providers: [KeycloakService, ExpenseService, AccountService,BackendInfoServiceService, EnvironmentService, GiphyService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
 
