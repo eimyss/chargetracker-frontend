@@ -38,15 +38,15 @@
 <p>
     <mat-form-field>
   <mat-select placeholder="Expense Type" [(ngModel)]="expense.type" name="type">
-    <mat-option *ngFor="let type of types" [value]="type.value">
-      {{type.viewValue}}
+    <mat-option *ngFor="let type of types" [value]="type">
+      {{type}}
     </mat-option>
   </mat-select>
 </mat-form-field>
 </p>
 <p>
 <mat-form-field>
-<mat-select placeholder="Account" [(ngModel)]="expense.accountid" name="account">
+<mat-select placeholder="Account" [(ngModel)]="expense.accountId" name="account">
 <mat-option *ngFor="let account of accounts" [value]="account.id">
   {{account.name}}
 </mat-option>

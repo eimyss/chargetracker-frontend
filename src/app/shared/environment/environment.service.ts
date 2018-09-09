@@ -8,7 +8,7 @@ export class EnvironmentService {
   public API = environment.API;
   public EXPENSE_API = this.API + '/open-expenses';
   public SAVE_EXPENSES_API = this.API + '/save';
-    public ACCOUNT_API = this.API + '/account';
+  public ACCOUNT_API = this.API + '/account';
   public backend_enabled = environment.backend;
   public title = environment.title;
 

@@ -20,7 +20,19 @@ export class ExpenseService {
     } else {
       return this.getMockedExpenses();
     }
+  }
 
+  getExpsenseByAccountId(id: number): Observable<any> {
+    if (this.environment.backend_enabled) {
+          return this.http.get(this.environment.API + '/expense/account/'+id);
+    } else {
+      return this.getMockedExpenses();
+    }
+  }
+
+
+  getExpensesTypes(): Observable<any> {
+          return this.http.get(this.environment.API + '/expenses/types');
   }
 
 

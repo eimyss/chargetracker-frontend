@@ -1,10 +1,17 @@
 
 
 
-<div class="example-container mat-elevation-z8">
-
-
+<div class="example-container mat-elevation-z8 background">
+<div class="horizontal">
 <app-expenses-search></app-expenses-search>
+<mat-form-field>
+<mat-select placeholder="Account" (selectionChange)="switchAccount()" [(ngModel)]="accountId" name="account">
+<mat-option *ngFor="let account of accounts" [value]="account.id">
+  {{account.name}}
+</mat-option>
+</mat-select>
+</mat-form-field>
+</div>
   <mat-paginator [length]="length"
                 [pageSize]="pageSize"
                 [pageSizeOptions]="pageSizeOptions"

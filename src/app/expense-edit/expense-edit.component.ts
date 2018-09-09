@@ -8,11 +8,6 @@ import { Expense } from '../shared/dto/expense';
 import { AccountCacheService } from '../shared/service/cache/account-cache.service';
 import { AccountDTO } from '../shared/dto/accountDTO';
 
-export interface Type {
-  value: string;
-  viewValue: string;
-}
-
 
 @Component({
   selector: 'app-expense-edit',
@@ -22,50 +17,47 @@ export interface Type {
 
 
 
-export class ExpenseEditComponent implements OnInit,OnDestroy {
-  // TODO replace with backend
-  types: Type[] = [
-  {value: 'diesel', viewValue: 'Spritt'},
-  {value: 'essen', viewValue: 'Essen'},
-  {value: 'rauchen', viewValue: 'Zigaretten'}
-  ];
+export class ExpenseEditComponent implements OnInit, OnDestroy {
+  types: string[] = [];
   accounts: AccountDTO[] = [];
 
 
-// WTF Its like Java....
+  // WTF Its like Java....
   expense: Expense = new Expense();
 
   selected = 'true';
   sub: Subscription;
 
- constructor(private route: ActivatedRoute,
-             private router: Router,
-             private accuntCache: AccountCacheService,
-             private expenseService: ExpenseService,
-             private giphyService: GiphyService) {
- }
+  constructor(private route: ActivatedRoute,
+    private router: Router,
+    private accuntCache: AccountCacheService,
+    private expenseService: ExpenseService,
+    private giphyService: GiphyService) {
+  }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-    const id = params['id'];
-    if (id) {
-      this.expenseService.get(id).subscribe((expense: any) => {
-        if (expense) {
-          this.expense = expense;
-          this.expense.href = expense._links.self.href;
-          this.giphyService.get(expense.name).subscribe(url => expense.giphyUrl = url);
-        } else {
-          console.log(`Expense with id '${id}' not found, returning to list`);
-          this.gotoList();
-        }
-      });
-    }
-  });
+      const id = params['id'];
+      if (id) {
+        this.expenseService.get(id).subscribe((expense: any) => {
+          if (expense) {
+            this.expense = expense;
+            this.expense.href = expense._links.self.href;
+            this.giphyService.get(expense.name).subscribe(url => expense.giphyUrl = url);
+          } else {
+            console.log(`Expense with id '${id}' not found, returning to list`);
+            this.gotoList();
+          }
+        });
+      }
+    });
     this.accounts = this.accuntCache.getAccountList();
+    this.types = this.accuntCache.getExpensesTypes();
+
   }
   ngOnDestroy() {
-  this.sub.unsubscribe();
-}
+    this.sub.unsubscribe();
+  }
 
 
   gotoList() {
@@ -73,8 +65,6 @@ export class ExpenseEditComponent implements OnInit,OnDestroy {
   }
 
   save() {
-
-
     this.expenseService.save(this.expense).subscribe(result => {
       console.log('saving: ' + this.expense)
       this.gotoList();
@@ -89,6 +79,6 @@ export class ExpenseEditComponent implements OnInit,OnDestroy {
 
   switchAbrechnung() {
     console.log(this.selected);
- }
+  }
 
 }

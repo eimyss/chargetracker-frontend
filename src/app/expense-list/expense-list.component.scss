@@ -1,0 +1,32 @@
+@import "~@angular/material/theming";
+
+// mixin name will be used in main style.scss
+
+
+  // retrieve variables from theme
+  // (all possible variables, use only what you really need)
+$primary: mat-palette($mat-grey);
+  //$accent: map-get($theme, accent);
+//  $warn: map-get($theme, accent);
+  //$foreground: map-get($theme, foreground);
+  //$background: map-get($theme, background);
+  $primaryPalette: mat-palette($mat-indigo);
+  $accentPalette:  mat-palette($mat-pink, A200, A100, A400);
+  $warnPalette:    mat-palette($mat-red);
+
+
+.mat-row:hover {
+  background-color: mat-color($warnPalette);
+  cursor: pointer;
+}
+
+
+.horizontal {
+   display: flex;
+   padding: 2px;
+}
+
+
+.background {
+  background: #424242;
+}
