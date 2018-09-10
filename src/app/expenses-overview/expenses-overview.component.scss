@@ -12,28 +12,13 @@ $warnPalette:    mat-palette($mat-red);
 
 .my-accent-text {
     color: mat-color($accentPalette);
-    padding: 20px;
     vertical-align: middle;
       text-align: center;
-}
-
-
-.full-page {
-min-width: 50%;
-max-height: 50%;
 }
 
 .centered {
   text-align: center;
 }
-
-.padded {
-  padding: 20px;
-  vertical-align: middle;
-    text-align: center;
-    color: red;
-}
-
 
 .table-spanned {
   colspan: 5px;
