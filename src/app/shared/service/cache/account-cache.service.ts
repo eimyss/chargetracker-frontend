@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AccountService } from '../account.service';
 import { AccountDTO } from '../../dto/accountDTO';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { ExpenseService } from '../../expense/expense.service';
 
 @Injectable({
@@ -67,10 +67,35 @@ export class AccountCacheService {
   }
 
 
-  getAccountListNoPromise():any {
-    this.getAccountList(false).then(data => {
-      return data;
-    },error=> console.log(error));
+  getAccountListNoPromise():AccountDTO[] {
+    if (sessionStorage.getItem('accounts') == null) {
+      console.log('getting accounts from server');
+      this.accountService.getAllAccounts().subscribe(result => {
+        console.log('receiving: ' + result);
+        sessionStorage.setItem('accounts', JSON.stringify(result));
+      }, error => console.log(error));
+    } else {
+      console.log('Accounts already cached')
+  return  JSON.parse(sessionStorage.getItem('accounts'));
+    }
+
+  return  JSON.parse(sessionStorage.getItem('accounts'));
   }
+
+  getAccountListObservable(): Observable<AccountDTO[]> {
+    if (sessionStorage.getItem('accounts') == null) {
+      console.log('getting accounts from server');
+      this.accountService.getAllAccounts().subscribe(result => {
+        console.log('receiving: ' + result);
+        sessionStorage.setItem('accounts', JSON.stringify(result));
+      }, error => console.log(error));
+    } else {
+      console.log('Accounts already cached')
+      return of( JSON.parse(sessionStorage.getItem('accounts')));
+    }
+
+  return of( JSON.parse(sessionStorage.getItem('accounts')));
+  }
+
 
 }

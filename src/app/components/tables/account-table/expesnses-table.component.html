@@ -1,4 +1,6 @@
 <div class="mat-elevation-z8">
+
+  <div>
   <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
 
     <!-- Id Column -->
@@ -17,10 +19,11 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/account-edit', row.id]"></mat-row>
   </mat-table>
 
-  <mat-paginator #paginator
-    [length]="dataSource.data.length"
-    [pageIndex]="0"
-    [pageSize]="50"
-    [pageSizeOptions]="[25, 50, 100, 250]">
+  <mat-paginator [length]="length"
+                [pageSize]="pageSize"
+                [pageSizeOptions]="pageSizeOptions"
+                (page)="pageEvent = $event">
   </mat-paginator>
+</div>
+
 </div>
