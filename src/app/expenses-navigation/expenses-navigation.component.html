@@ -20,10 +20,9 @@
   <a mat-list-item href="#">Link 2</a>
   <a mat-list-item href="#">Link 3</a>
   <a mat-list-item href="#">Dashboard</a>
-    <a mat-list-item href="#">Statistics</a>
-    <a mat-list-item href="/calendar-overview">Calendar</a>
+  <a mat-list-item href="#">Statistics</a>
+  <a mat-list-item href="/calendar-overview">Calendar</a>
   <a mat-list-item href="/testing">Test API</a>
-
   <a mat-list-item href="/backend/info">Backend Info</a>
   <a mat-list-item href="/expense-list">Expenses List</a>
 
@@ -31,12 +30,8 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-
-
-
         <span>Welcome to {{title}}!</span>
         <span class="toolbar-spacer"></span>
-
         <button
           type="button"
           aria-label="Toggle sidenav"
@@ -44,19 +39,14 @@
           (click)="drawer.toggle()">
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-
       <div class="right">
         <button mat-raised-button color="accent" *ngIf="isAuthenticated"
        [routerLink]="['/home']">Home
         </button>
-
         <button mat-raised-button color="accent" *ngIf="isAuthenticated"
                 (click)="oktaAuth.logout()" [routerLink]="['/home']">Logout
         </button>
       </div>
-
-
-
     </mat-toolbar>
   </mat-sidenav-content>
 </mat-sidenav-container>

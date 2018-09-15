@@ -14,7 +14,7 @@ export class AccountCacheService {
   }
 
   getTest(): string {
-    localStorage.setItem('key', 'value');
+    sessionStorage.setItem('key', 'value');
     return 'seting storage';
   }
 
@@ -23,37 +23,37 @@ export class AccountCacheService {
   }
 
   getExpensesTypes(): string[] {
-    if (localStorage.getItem(this.typesKey) == null) {
+    if (sessionStorage.getItem(this.typesKey) == null) {
       console.log('getting expense types from server');
       this.expenseService.getExpensesTypes().subscribe(result => {
         console.log('receiving: ' + result);
-        localStorage.setItem(this.typesKey, JSON.stringify(result));
+        sessionStorage.setItem(this.typesKey, JSON.stringify(result));
       }, error => console.log(error));
     } else {
       console.log('Expense Types already cached')
-      return JSON.parse(localStorage.getItem(this.typesKey));
+      return JSON.parse(sessionStorage.getItem(this.typesKey));
     }
-    return JSON.parse(localStorage.getItem(this.typesKey));;
+    return JSON.parse(sessionStorage.getItem(this.typesKey));;
   }
 
   refreshCache() {
-    localStorage.removeItem('accounts');
+    sessionStorage.removeItem('accounts');
     this.getAccountList();
   }
   getAccountList(): AccountDTO[] {
-    if (localStorage.getItem('accounts') == null) {
+    if (sessionStorage.getItem('accounts') == null) {
       console.log('getting accounts from server');
       this.accountService.getAllAccounts().subscribe(result => {
         console.log('receiving: ' + result);
-        localStorage.setItem('accounts', JSON.stringify(result));
+        sessionStorage.setItem('accounts', JSON.stringify(result));
       }, error => console.log(error));
     } else {
       console.log('Accounts already cached')
 
-      return JSON.parse(localStorage.getItem('accounts'));
+      return JSON.parse(sessionStorage.getItem('accounts'));
     }
 
-    return JSON.parse(localStorage.getItem('accounts'));;
+    return JSON.parse(sessionStorage.getItem('accounts'));;
 
   }
 
