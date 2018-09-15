@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { GiphyService } from '../shared/giphy/giphy.service';
-import { ExpenseService } from '../shared/expense/expense.service';
 import { MatTableDataSource, MatSort, PageEvent, MatPaginator } from '@angular/material';
-import { AccountDTO } from '../shared/dto/accountDTO';
-import { AccountCacheService } from '../shared/service/cache/account-cache.service';
-import { AccountService } from '../shared/service/account.service';
+import { ExpenseService } from '../../../shared/expense/expense.service';
+import { AccountCacheService } from '../../../shared/service/cache/account-cache.service';
+import { AccountDTO } from '../../../shared/dto/accountDTO';
+
 
 @Component({
   selector: 'app-expense-list',
@@ -15,7 +14,7 @@ export class ExpenseListComponent implements OnInit {
 
   accountId: number = 0;
   expenses: Array<any>;
-  displayedColumns = ['giphyUrl', 'name', 'betrag', 'ort'];
+  displayedColumns = ['idcolumn', 'name', 'betrag', 'ort'];
   dataSource: MatTableDataSource<any>;
   accounts: AccountDTO[] = [];
 
@@ -47,9 +46,6 @@ export class ExpenseListComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.expenses);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
-      for (const expense of this.expenses) {
-      //  this.giphyService.get(expense.name).subscribe(url => expense.giphyUrl = url);
-      }
     });
     this.accounts = this.accuntCache.getAccountList();
 

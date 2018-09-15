@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Observable, of} from 'rxjs';
 import {map, startWith, debounceTime} from 'rxjs/operators';
-import {Expense} from '../shared/dto/expense'
-import { ExpenseService } from '../shared/expense/expense.service';
+import { Expense } from '../../../shared/dto/expense';
+import { ExpenseService } from '../../../shared/expense/expense.service';
 
 
 @Component({

@@ -1,12 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ExpenseService } from '../shared/expense/expense.service';
-import { GiphyService } from '../shared/giphy/giphy.service';
 import { NgForm } from '@angular/forms';
-import { Expense } from '../shared/dto/expense';
-import { AccountCacheService } from '../shared/service/cache/account-cache.service';
-import { AccountDTO } from '../shared/dto/accountDTO';
+import { AccountDTO } from '../../../shared/dto/accountDTO';
+import { Expense } from '../../../shared/dto/expense';
+import { AccountCacheService } from '../../../shared/service/cache/account-cache.service';
+import { ExpenseService } from '../../../shared/expense/expense.service';
+import { GiphyService } from '../../../shared/giphy/giphy.service';
+
 
 
 @Component({

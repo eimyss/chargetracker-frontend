@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ExpenseService } from '../shared/expense/expense.service';
-import { AccountOverview} from '../shared/dto/account-overview';
-import { AccountDTO } from '../shared/dto/accountDTO';
+import { AccountOverview } from '../../../shared/dto/account-overview';
+import { ExpenseService } from '../../../shared/expense/expense.service';
+import { AccountDTO } from '../../../shared/dto/accountDTO';
+
 
 
 // TODO  OMG I NEED TO organize modules.....

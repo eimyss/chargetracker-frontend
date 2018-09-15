@@ -20,15 +20,15 @@
 
   <mat-table #table [dataSource]="dataSource" matSort>
 
-    <ng-container matColumnDef="giphyUrl">
-      <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
-      <mat-cell *matCellDef="let expense"> <img mat-card-image src="{{expense.giphyUrl}}" alt="Giffy!!!" height="42" width="42"></mat-cell>
-    </ng-container>
 
+    <ng-container matColumnDef="idcolumn">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+      <mat-cell *matCellDef="let expense"> {{expense.id}} </mat-cell>
+    </ng-container>
 
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-      <mat-cell *matCellDef="let expense"> {{expense.name}} </mat-cell>
+      <mat-cell *matCellDef="let expense" height="42" width="100"> {{expense.name}} </mat-cell>
     </ng-container>
 
 
@@ -45,8 +45,6 @@
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/expense-edit', row.id]" ></mat-row>
-
-
 
   </mat-table>
 </div>

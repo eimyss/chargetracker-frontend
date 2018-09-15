@@ -3,11 +3,11 @@ import { MatPaginator, MatSort } from '@angular/material';
 import { ExpesnsesTableDataSource } from './expesnses-table-datasource';
 
 @Component({
-  selector: 'expesnses-table',
+  selector: 'accounts-table',
   templateUrl: './expesnses-table.component.html',
   styleUrls: ['./expesnses-table.component.css']
 })
-export class ExpesnsesTableComponent implements OnInit {
+export class AccountTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   dataSource: ExpesnsesTableDataSource;

@@ -5,9 +5,7 @@ import { EnvironmentService } from './shared/environment/environment.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { GiphyService } from './shared/giphy/giphy.service';
-import { ExpenseListComponent } from './expense-list/expense-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ExpenseEditComponent } from './expense-edit/expense-edit.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
@@ -20,8 +18,6 @@ import {
   MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
   MatSortModule, MatTableModule, MatDatepickerModule, MatNativeDateModule, MatButtonModule, MatCardModule, MatListModule, MatToolbarModule, MatSelectModule, MatSidenavModule, MatIconModule
 } from "@angular/material";
-import { ExpensesOverviewComponent } from './expenses-overview/expenses-overview.component';
-import { ExpensesSearchComponent } from './expenses-search/expenses-search.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
@@ -43,7 +39,11 @@ import { BackendInfoServiceService } from './shared/service/backend/backend-info
 import { ExpensesNavigationComponent } from './expenses-navigation/expenses-navigation.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ExpensesDashboardComponent } from './expenses-dashboard/expenses-dashboard.component';
-import { ExpesnsesTableComponent } from './expesnses-table/expesnses-table.component';
+import { AccountTableComponent } from './components/tables/account-table/account-table.component';
+import { ExpenseListComponent } from './components/tables/expense-list/expense-list.component';
+import { ExpenseEditComponent } from './pages/expenses/expense-edit/expense-edit.component';
+import { ExpensesOverviewComponent } from './components/widgets/expenses-overview/expenses-overview.component';
+import { ExpensesSearchComponent } from './components/widgets/expenses-search/expenses-search.component';
 
 
 const appRoutes: Routes = [
@@ -62,8 +62,8 @@ const appRoutes: Routes = [
     component: ExpensesDashboardComponent
   },
   {
-    path: 'table',
-    component: ExpesnsesTableComponent
+    path: 'account/list',
+    component: AccountTableComponent
   },
   {
     path: 'backend/info',
@@ -107,7 +107,7 @@ const appRoutes: Routes = [
     BackendInfoPageComponent,
     ExpensesNavigationComponent,
     ExpensesDashboardComponent,
-    ExpesnsesTableComponent
+    AccountTableComponent
   ],
   imports: [
     BrowserModule,
