@@ -15,16 +15,19 @@ import { AccountDTO } from '../shared/dto/accountDTO';
 export class ExpensesNavigationComponent {
 
   title = 'app';
+  accountList: AccountDTO[] = new Array<AccountDTO>();
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private env: EnvironmentService) {}
+  constructor(private breakpointObserver: BreakpointObserver, private env: EnvironmentService, private cache: AccountCacheService) {}
 
   ngOnInit() {
-    this.title = this.env.title;
+        this.title = this.env.title;
+    this.accountList = this.cache.getAccountListNoPromise();
+
   }
 
 logout()  {

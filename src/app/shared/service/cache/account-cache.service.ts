@@ -67,18 +67,10 @@ export class AccountCacheService {
   }
 
 
-  getAccountListNoPromise(): AccountDTO[] {
-      if (sessionStorage.getItem('accounts') == null) {
-        console.log('getting accounts from server');
-        this.accountService.getAllAccounts().subscribe(result => {
-          console.log('receiving: ' + result);
-          sessionStorage.setItem('accounts', JSON.stringify(result));
-        }, error => console.log(error));
-      } else {
-        console.log('Accounts already cached')
-        return( JSON.parse(sessionStorage.getItem('accounts')));
-      }
-      return( JSON.parse(sessionStorage.getItem('accounts')));
+  getAccountListNoPromise():any {
+    this.getAccountList(false).then(data => {
+      return data;
+    },error=> console.log(error));
   }
 
 }
