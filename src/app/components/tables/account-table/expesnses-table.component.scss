@@ -1,0 +1,8 @@
+@import "~@angular/material/theming";
+
+$accentPalette:  mat-palette($mat-pink);
+
+.mat-row:hover {
+  background-color: mat-color($accentPalette);
+  cursor: pointer;
+}

@@ -47,7 +47,7 @@ export class ExpenseListComponent implements OnInit {
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     });
-    this.accounts = this.accuntCache.getAccountList();
+    this.accounts = this.accuntCache.getAccountListNoPromise();
 
   }
 

@@ -27,7 +27,6 @@ import { CreateNewItemComponent } from './components/widgets/create-new-item/cre
 import { CalendarPage } from './pages/calendar-page/calendar-page.component';
 import { CalendarModule } from 'angular-calendar';
 import { DemoUtilsModule } from '../demo-utils/module';
-import { LowerToolbarComponent } from './components/shared/lower-toolbar/lower-toolbar.component';
 import { CreatePageComponent } from './pages/create-page/create-page.component';
 import { TestingComponent } from './components/shared/testing/testing.component';
 import { AccountDetailedComponent } from './pages/accounts/account-detailed/account-detailed.component';
@@ -84,6 +83,10 @@ const appRoutes: Routes = [
   {
     path: 'expense-edit/:id',
     component: ExpenseEditComponent
+  },
+  {
+    path: 'account-edit/:id',
+    component: AccountDetailedComponent
   }
 ];
 
@@ -100,7 +103,6 @@ const appRoutes: Routes = [
     CashFlowComponent,
     CreateNewItemComponent,
     CalendarPage,
-    LowerToolbarComponent,
     CreatePageComponent,
     TestingComponent,
     AccountDetailedComponent,

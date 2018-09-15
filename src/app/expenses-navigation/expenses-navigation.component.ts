@@ -15,23 +15,20 @@ import { AccountDTO } from '../shared/dto/accountDTO';
 export class ExpensesNavigationComponent {
 
   title = 'app';
-  isAuthenticated: boolean;
-  accountList: AccountDTO[];
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private keycloack: KeycloakService, private env: EnvironmentService, private accountcache: AccountCacheService) {}
+  constructor(private breakpointObserver: BreakpointObserver, private env: EnvironmentService) {}
 
-  async ngOnInit() {
-
+  ngOnInit() {
     this.title = this.env.title;
-    this.accountList = this.accountcache.getAccountList();
-    console.log('keylocak is loggedin: ' + this.keycloack.isLoggedIn());
-    this.isAuthenticated = await this.keycloack.isLoggedIn();
   }
 
+logout()  {
+  console.log('logout');
+}
 
   }

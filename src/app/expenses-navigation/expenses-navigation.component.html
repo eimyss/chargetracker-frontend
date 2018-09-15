@@ -16,15 +16,15 @@
        </button>
   </mat-menu>
 
-  <a mat-list-item href="#">Link 1</a>
-  <a mat-list-item href="#">Link 2</a>
-  <a mat-list-item href="#">Link 3</a>
-  <a mat-list-item href="#">Dashboard</a>
-  <a mat-list-item href="#">Statistics</a>
-  <a mat-list-item href="/calendar-overview">Calendar</a>
-  <a mat-list-item href="/testing">Test API</a>
-  <a mat-list-item href="/backend/info">Backend Info</a>
-  <a mat-list-item href="/expense-list">Expenses List</a>
+  <a mat-list-item routerLink="#">Link 1</a>
+  <a mat-list-item routerLink="#">Link 2</a>
+  <a mat-list-item routerLink="#">Link 3</a>
+  <a mat-list-item routerLink="#">Dashboard</a>
+  <a mat-list-item routerLink="/account/list">Accounts List</a>
+  <a mat-list-item routerLink="/calendar-overview">Calendar</a>
+  <a mat-list-item routerLink="/testing">Test API</a>
+  <a mat-list-item routerLink="/backend/info">Backend Info</a>
+  <a mat-list-item routerLink="/expense-list">Expenses List</a>
 
     </mat-nav-list>
   </mat-sidenav>
@@ -40,11 +40,9 @@
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
       <div class="right">
-        <button mat-raised-button color="accent" *ngIf="isAuthenticated"
-       [routerLink]="['/home']">Home
+        <button mat-raised-button color="accent"  [routerLink]="['/home']">Home
         </button>
-        <button mat-raised-button color="accent" *ngIf="isAuthenticated"
-                (click)="oktaAuth.logout()" [routerLink]="['/home']">Logout
+        <button mat-raised-button color="accent" (click)="logout()" [routerLink]="['/home']">Logout
         </button>
       </div>
     </mat-toolbar>

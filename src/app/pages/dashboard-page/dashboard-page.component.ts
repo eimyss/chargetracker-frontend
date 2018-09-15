@@ -11,7 +11,7 @@ export class DashboardPageComponent implements OnInit {
   constructor(private accountcache: AccountCacheService) { }
 
   ngOnInit() {
-    console.log('cache service say: ' + this.accountcache.getAccountList());
+    console.log('cache service say: ' + this.accountcache.getAccountListNoPromise());
   }
 
 }

@@ -7,6 +7,7 @@ import { expenses } from '../mock/mock-expenses'
 import { MockedOverview } from '../mock/mock-overview'
 import { Expense } from '../dto/expense';
 import { AccountDTO } from '../dto/accountDTO';
+import { AccountCacheService } from './cache/account-cache.service';
 
 @Injectable()
 export class AccountService {
@@ -27,6 +28,11 @@ export class AccountService {
       return this.http.get(this.environment.API + url);
     }
 
+  }
+
+
+  getAccount(id: string) {
+    return this.http.get(this.environment.ACCOUNT_API + '/get/' + id);
   }
 
 
@@ -65,17 +71,14 @@ export class AccountService {
   save(account: AccountDTO): Observable<any> {
     let result: Observable<Object>;
     console.log('saving:' + account);
-    if (this.environment.backend_enabled) {
+
       if (account['id']) {
-        result = this.http.put(account.id + '', account);
+         console.log('updating account');
+        result = this.http.put(this.environment.ACCOUNT_API + '/save', account);
       } else {
         console.log('saving new account');
         result = this.http.post(this.environment.ACCOUNT_API + '/save', account);
       }
-    } else {
-      console.log('only backend suppoerted');
-    }
-
     return result;
   }
 

@@ -52,7 +52,7 @@ export class ExpenseEditComponent implements OnInit, OnDestroy {
         });
       }
     });
-    this.accounts = this.accuntCache.getAccountList();
+    this.accounts = this.accuntCache.getAccountListNoPromise();
     this.types = this.accuntCache.getExpensesTypes();
 
   }

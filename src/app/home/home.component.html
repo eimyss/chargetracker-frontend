@@ -3,14 +3,8 @@
     <button mat-button *ngIf="!isAuthenticated"
           (click)="login()">Login
     </button>
-
-
         <div *ngIf="isAuthenticated">
-
-        <app-lower-toolbar></app-lower-toolbar>
-
     <app-dashboard-page></app-dashboard-page>
     </div>
-
   </mat-card-content>
 </mat-card>
