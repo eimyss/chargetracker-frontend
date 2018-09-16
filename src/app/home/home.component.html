@@ -1,10 +1,9 @@
 <mat-card>
   <mat-card-content>
-    <button mat-button *ngIf="!isAuthenticated"
-          (click)="login()">Login
+    <button mat-button
+          (click)="login()">Login Button (Do I need?)
     </button>
-        <div *ngIf="isAuthenticated">
-    <app-dashboard-page></app-dashboard-page>
+        <div>
     </div>
   </mat-card-content>
 </mat-card>

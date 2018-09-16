@@ -38,7 +38,7 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <div>   <app-cash-flow></app-cash-flow></div>
+          <div> <app-cash-flow></app-cash-flow></div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
@@ -62,14 +62,7 @@
           <div>
             <div>
             <!--   <div class="col-md-6" style="margin-bottom: 10px">-->
-               <table >
-                 <tr>
-                   <th *ngFor="let label of lineChartLabels">{{label}}</th>
-                 </tr>
-                 <tr *ngFor="let d of lineChartData">
-                   <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
-                 </tr>
-               </table>
+            
             <!--   <button (click)="randomize()">CLICK</button> -->
           </div>
            <div>

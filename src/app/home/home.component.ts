@@ -19,4 +19,8 @@ export class HomeComponent implements OnInit {
 
 
 
+public login() : void{
+  console.log('qq eimantas login');
+}
+
 }

@@ -20,7 +20,6 @@ import {
 } from "@angular/material";
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { CashFlowComponent } from './components/widgets/cash-flow/cash-flow.component';
 import { CreateNewItemComponent } from './components/widgets/create-new-item/create-new-item.component';
@@ -42,7 +41,6 @@ import { AccountTableComponent } from './components/tables/account-table/account
 import { ExpenseListComponent } from './components/tables/expense-list/expense-list.component';
 import { ExpenseEditComponent } from './pages/expenses/expense-edit/expense-edit.component';
 import { ExpensesOverviewComponent } from './components/widgets/expenses-overview/expenses-overview.component';
-import { ExpensesSearchComponent } from './components/widgets/expenses-search/expenses-search.component';
 
 
 const appRoutes: Routes = [
@@ -98,8 +96,6 @@ const appRoutes: Routes = [
     ExpenseEditComponent,
     HomeComponent,
     ExpensesOverviewComponent,
-    ExpensesSearchComponent,
-    DashboardPageComponent,
     CashFlowComponent,
     CreateNewItemComponent,
     CalendarPage,
