@@ -41,11 +41,16 @@ import { AccountTableComponent } from './components/tables/account-table/account
 import { ExpenseListComponent } from './components/tables/expense-list/expense-list.component';
 import { ExpenseEditComponent } from './pages/expenses/expense-edit/expense-edit.component';
 import { ExpensesOverviewComponent } from './components/widgets/expenses-overview/expenses-overview.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+//  { path: '', redirectTo: '/home', pathMatch: 'full' },
 
+{
+  path: '',
+  component: ExpensesDashboardComponent
+},
   {
     path: 'expense-list',
     component: ExpenseListComponent
@@ -137,7 +142,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     LayoutModule,
     MatSidenavModule,
-    MatIconModule
+    MatIconModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [KeycloakService, ExpenseService, AccountService,BackendInfoServiceService, EnvironmentService, GiphyService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
 

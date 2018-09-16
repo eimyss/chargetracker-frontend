@@ -10,8 +10,28 @@
  <script src="http://java-3.eimantas.server:8180/auth/js/keycloak.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1976d2">
 </head>
+<style>
+.center {
+   display: block;
+   margin-top: auto;
+   margin-bottom: auto;
+   margin-left: auto;
+   margin-right: auto;
+   width: 50%;
+}
+</style>
 <body>
-  <app-root></app-root>
+  <app-root>
+  <img alt="self-Logo" src="assets/spinner.svg" class="center">
+  </app-root>
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
 </body>
+<noscript>
+  <h3 style="color: #673ab7; font-family: Helvetica; margin: 2rem;">
+      Sorry, but app is not available without javascript
+  </h3>
+</noscript>
 </html>

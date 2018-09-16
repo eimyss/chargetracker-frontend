@@ -18,6 +18,9 @@
 .settings/
 *.sublime-workspace
 
+### private stuff ###
+*.pem
+
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json
