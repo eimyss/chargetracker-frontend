@@ -15,7 +15,10 @@ vertical-align: middle;
 }
 
 
-.canvas {
-width: 90%;
-height: 90%;
+.content {
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 5px;
+  padding: 5px;
 }

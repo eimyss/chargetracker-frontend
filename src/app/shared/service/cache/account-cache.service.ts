@@ -43,43 +43,42 @@ export class AccountCacheService {
   getAccountList(refresh: boolean): Promise<any> {
 
     if (refresh) {
-        console.log('refresh wanted');
-        sessionStorage.removeItem('accounts');
+      console.log('refresh wanted');
+      sessionStorage.removeItem('accounts');
     }
 
     var promise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (sessionStorage.getItem('accounts') == null) {
-        console.log('getting accounts from server');
-        this.accountService.getAllAccounts().subscribe(result => {
-          console.log('receiving: ' + result);
-          sessionStorage.setItem('accounts', JSON.stringify(result));
-        }, error => console.log(error));
-      } else {
-        console.log('Accounts already cached')
-        resolve( JSON.parse(sessionStorage.getItem('accounts')));
-      }
-      resolve( JSON.parse(sessionStorage.getItem('accounts')));
-    }, 1000);
-  });
-  return promise;
+      setTimeout(() => {
+        if (sessionStorage.getItem('accounts') == null) {
+          console.log('getting accounts from server');
+          this.accountService.getAllAccounts().subscribe(result => {
+            console.log('receiving: ' + result);
+            sessionStorage.setItem('accounts', JSON.stringify(result));
+          }, error => console.log(error));
+        } else {
+          console.log('Accounts already cached')
+          resolve(JSON.parse(sessionStorage.getItem('accounts')));
+        }
+        resolve(JSON.parse(sessionStorage.getItem('accounts')));
+      }, 1000);
+    });
+    return promise;
 
   }
 
 
-  getAccountListNoPromise():AccountDTO[] {
+  getAccountListNoPromise(): AccountDTO[] {
     if (sessionStorage.getItem('accounts') == null) {
       console.log('getting accounts from server');
       this.accountService.getAllAccounts().subscribe(result => {
         console.log('receiving: ' + result);
         sessionStorage.setItem('accounts', JSON.stringify(result));
+        return JSON.parse(sessionStorage.getItem('accounts'));
       }, error => console.log(error));
     } else {
       console.log('Accounts already cached')
-  return  JSON.parse(sessionStorage.getItem('accounts'));
+      return JSON.parse(sessionStorage.getItem('accounts'));
     }
-
-  return  JSON.parse(sessionStorage.getItem('accounts'));
   }
 
   getAccountListObservable(): Observable<AccountDTO[]> {
@@ -88,13 +87,12 @@ export class AccountCacheService {
       this.accountService.getAllAccounts().subscribe(result => {
         console.log('receiving: ' + result);
         sessionStorage.setItem('accounts', JSON.stringify(result));
+        return of(JSON.parse(sessionStorage.getItem('accounts')));
       }, error => console.log(error));
     } else {
       console.log('Accounts already cached')
-      return of( JSON.parse(sessionStorage.getItem('accounts')));
+      return of(JSON.parse(sessionStorage.getItem('accounts')));
     }
-
-  return of( JSON.parse(sessionStorage.getItem('accounts')));
   }
 
 

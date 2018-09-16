@@ -25,9 +25,11 @@ export class ExpensesNavigationComponent {
   constructor(private breakpointObserver: BreakpointObserver, private env: EnvironmentService, private cache: AccountCacheService) {}
 
   ngOnInit() {
-        this.title = this.env.title;
-    this.accountList = this.cache.getAccountListNoPromise();
-
+    this.title = this.env.title;
+    this.cache.getAccountListObservable().subscribe(data => {
+     console.log('setting account list with lenght: ' + data.length);
+     this.accountList = data;
+   });
   }
 
 logout()  {

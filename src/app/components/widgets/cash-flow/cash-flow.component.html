@@ -1,9 +1,6 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm">
+<div class="content">
   Current Balance (all accounts) : 3000  <button  mat-button color="primary">Overview</button>
-
-     <canvas baseChart
+    <canvas baseChart height="100"
                  [datasets]="lineChartData"
                  [labels]="lineChartLabels"
                  [options]="lineChartOptions"
@@ -12,29 +9,4 @@
                  [chartType]="lineChartType"
                  (chartHover)="chartHovered($event)"
                  (chartClick)="chartClicked($event)"></canvas>
-              
-      </div>
-  <div class="col-sm">
-  <!--   <div class="col-md-6" style="margin-bottom: 10px">-->
-     <table >
-       <tr>
-         <th *ngFor="let label of lineChartLabels">{{label}}</th>
-       </tr>
-       <tr *ngFor="let d of lineChartData">
-         <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
-       </tr>
-     </table>
-  <!--   <button (click)="randomize()">CLICK</button> -->
-</div>
- <div class="col-sm">
-       <mat-list class="streched">
- <mat-list-item> Expected Balance after this month (Privat): 4000  </mat-list-item>
-  <mat-list-item> Expected Balance after this month (Business): 4000  </mat-list-item>
-  <mat-list-item> Not expensed expenses : 1000EUR <button  mat-button color="primary">3 expenses</button></mat-list-item>
- <mat-list-item> Expected balance in 3 Months (Privat): 9000 </mat-list-item>
-  <mat-list-item> Expected balance in 3 Months (Business): 28000 </mat-list-item>
-</mat-list>
-
-</div>
  </div>
-</div>

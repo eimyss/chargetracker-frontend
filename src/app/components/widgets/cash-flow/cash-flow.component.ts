@@ -14,7 +14,9 @@ export class CashFlowComponent implements OnInit {
     ];
     public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
     public lineChartOptions:any = {
-      responsive: true
+      scaleShowVerticalLines: false,
+      responsive: true,
+      maintainAspectRatio: false
     };
     public lineChartColors:Array<any> = [
       { // grey

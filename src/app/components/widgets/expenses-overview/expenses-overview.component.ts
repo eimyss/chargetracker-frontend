@@ -19,7 +19,8 @@ overview : AccountOverview;
 
 public barChartOptions:any = {
   scaleShowVerticalLines: false,
-  responsive: true
+  responsive: true,
+  maintainAspectRatio: false
 };
 public barChartLabels:string[] = ['KW10', 'KW11', 'KW12', 'KW13', 'KW14', 'KW15', 'KW16'];
 public barChartType:string = 'bar';
@@ -29,7 +30,7 @@ public barChartData:any[] = [
   {data: [10, 8, 10, 0, 10, 40, 10], label: 'Essen'},
   {data: [20, 15, 15, 15, 35, 15, 15], label: 'Fahrkosten'},
   {data: [0, 200, 0, 0, 50, 15, 0], label: 'Sonstige Ausgaben'},
-    {data: [0, 0, 0, 100, 0, 0, 90], label: 'Private Ausgaben'}
+  {data: [0, 0, 0, 100, 0, 0, 90], label: 'Private Ausgaben'}
 
 ];
 
