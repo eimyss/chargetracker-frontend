@@ -4,7 +4,6 @@ import { Observable, of } from 'rxjs';
 import { map, delay, catchError } from 'rxjs/operators';
 import { EnvironmentService } from '../environment/environment.service'
 import { expenses } from '../mock/mock-expenses'
-import { MockedOverview } from '../mock/mock-overview'
 import { Expense } from '../dto/expense';
 import { AccountDTO } from '../dto/accountDTO';
 import { AccountCacheService } from './cache/account-cache.service';
@@ -36,22 +35,12 @@ export class AccountService {
   }
 
 
-  getOverview(): Observable<any> {
-
-    if (this.environment.backend_enabled) {
-      return this.http.get(this.environment.API + '/account/overview/482')
-    } else {
-      return this.getMockedOverview();
-    }
-
+  getOverviewForAccountID(id: any): Observable<any> {
+    return this.http.get(this.environment.API + '/account/overview/' + id)
   }
 
   doExpenseSearch(name: string): Observable<any> {
-    if (this.environment.backend_enabled) {
-      return this.http.get(this.environment.API + '/expenses/search?name=' + name);
-    } else {
-      return this.getMockedOverview();
-    }
+    return this.http.get(this.environment.API + '/expenses/search?name=' + name);
   }
 
   getMockedExpenses(): Observable<any> {
@@ -59,9 +48,13 @@ export class AccountService {
     return of(expenses).pipe(delay(new Date(Date.now() + 1000)));
   }
 
-  getMockedOverview(): Observable<any> {
-    return of(MockedOverview);
+
+
+
+  public getOverview(): Observable<any> {
+    return this.http.get(this.environment.API + '/account/global')
   }
+
 
 
   getExpensesOverviewByAccountId(id: number): Observable<any> {
@@ -72,13 +65,13 @@ export class AccountService {
     let result: Observable<Object>;
     console.log('saving:' + account);
 
-      if (account['id']) {
-         console.log('updating account');
-        result = this.http.put(this.environment.ACCOUNT_API + '/save', account);
-      } else {
-        console.log('saving new account');
-        result = this.http.post(this.environment.ACCOUNT_API + '/save', account);
-      }
+    if (account['id']) {
+      console.log('updating account');
+      result = this.http.put(this.environment.ACCOUNT_API + '/save', account);
+    } else {
+      console.log('saving new account');
+      result = this.http.post(this.environment.ACCOUNT_API + '/save', account);
+    }
     return result;
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AccountOverview } from '../../../shared/dto/account-overview';
 import { ExpenseService } from '../../../shared/expense/expense.service';
 import { AccountDTO } from '../../../shared/dto/accountDTO';
+import { AccountCacheService } from '../../../shared/service/cache/account-cache.service';
 
 
 
@@ -64,18 +65,13 @@ public randomize():void {
    */
 }
 
-  constructor(private expenseService: ExpenseService) { }
+  constructor(private cacheService: AccountCacheService) { }
 
 
   ngOnInit() {
     // do some init data
     this.overview = new AccountOverview();
-      this.overview.active = false;
-      this.overview.countExpenses = 1;
-      this.overview.total=0;
-      this.overview.refAccount= new AccountDTO();
-      this.overview.refAccount.name="loading"
-    this.expenseService.getOverview().subscribe(data => {
+    this.cacheService.getGlobalOverview().subscribe(data => {
       console.log('overview done');
       this.overview = data;
    });

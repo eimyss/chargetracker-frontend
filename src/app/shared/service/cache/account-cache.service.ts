@@ -3,12 +3,14 @@ import { AccountService } from '../account.service';
 import { AccountDTO } from '../../dto/accountDTO';
 import { Observable, of } from 'rxjs';
 import { ExpenseService } from '../../expense/expense.service';
+import { AccountOverview } from '../../dto/account-overview';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountCacheService {
   private typesKey: string = "types";
+    private globalOverviewKey: string = "global";
 
   constructor(private accountService: AccountService, private expenseService: ExpenseService) {
   }
@@ -89,11 +91,26 @@ export class AccountCacheService {
         sessionStorage.setItem('accounts', JSON.stringify(result));
         return of(JSON.parse(sessionStorage.getItem('accounts')));
       }, error => console.log(error));
+      return this.accountService.getAllAccounts();
     } else {
       console.log('Accounts already cached')
       return of(JSON.parse(sessionStorage.getItem('accounts')));
     }
   }
 
+  getGlobalOverview(): Observable<AccountOverview> {
+    if (sessionStorage.getItem(this.globalOverviewKey) == null) {
+      console.log('getting overview from server');
+      this.accountService.getOverview().subscribe(result => {
+        console.log('receiving: ' + result);
+        sessionStorage.setItem(this.globalOverviewKey, JSON.stringify(result));
+        return of(JSON.parse(sessionStorage.getItem(this.globalOverviewKey)));
+      }, error => console.log(error));
+      return this.accountService.getOverview();
+    } else {
+      console.log('Accounts already cached')
+      return of(JSON.parse(sessionStorage.getItem(this.globalOverviewKey)));
+    }
+  }
 
 }

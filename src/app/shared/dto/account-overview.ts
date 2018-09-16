@@ -1,10 +1,11 @@
 import {AccountDTO} from './accountDTO';
+import { Expense } from './expense';
 
 
 export class AccountOverview {
-  total: number;
-  active: boolean;
-  name: string;
-  countExpenses: number;
-  refAccount: AccountDTO;
+  monthback: number;
+  createDate: string;
+  userid: number;
+  overview: any[];
+  unexpenced: Expense[];
 }

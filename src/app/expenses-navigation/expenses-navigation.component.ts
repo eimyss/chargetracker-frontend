@@ -6,6 +6,7 @@ import { KeycloakService } from '../shared/service/keycloack.service';
 import { EnvironmentService } from '../shared/environment/environment.service';
 import { AccountCacheService } from '../shared/service/cache/account-cache.service';
 import { AccountDTO } from '../shared/dto/accountDTO';
+import { AccountOverview } from '../shared/dto/account-overview';
 
 @Component({
   selector: 'expenses-navigation',
@@ -13,8 +14,9 @@ import { AccountDTO } from '../shared/dto/accountDTO';
   styleUrls: ['./expenses-navigation.component.css']
 })
 export class ExpensesNavigationComponent {
-
+  overview : AccountOverview;
   title = 'app';
+  unexpensedSize: number = 0;
   accountList: AccountDTO[] = new Array<AccountDTO>();
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -30,6 +32,11 @@ export class ExpensesNavigationComponent {
      console.log('setting account list with lenght: ' + data.length);
      this.accountList = data;
    });
+   this.cache.getGlobalOverview().subscribe(data => {
+     console.log('overview done');
+     this.overview = data;
+     this.unexpensedSize = this.overview.unexpenced.length;
+  });
   }
 
 logout()  {

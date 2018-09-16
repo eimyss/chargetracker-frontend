@@ -15,7 +15,7 @@ import { ChartsModule } from 'ng2-charts';
 import { HomeComponent } from './home/home.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {
-  MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
+  MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,MatBadgeModule,
   MatSortModule, MatTableModule, MatDatepickerModule, MatNativeDateModule, MatButtonModule, MatCardModule, MatListModule, MatToolbarModule, MatSelectModule, MatSidenavModule, MatIconModule
 } from "@angular/material";
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -122,6 +122,7 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatTableModule,
     MatGridListModule,
+    MatBadgeModule,
     MatMenuModule,
     MatDatepickerModule,
     MatNativeDateModule,
