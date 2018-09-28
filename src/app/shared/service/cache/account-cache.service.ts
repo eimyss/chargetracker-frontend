@@ -88,7 +88,7 @@ export class AccountCacheService {
       console.log('getting accounts from server');
       this.accountService.getAllAccounts().subscribe(result => {
         console.log('receiving: ' + result);
-        sessionStorage.setItem('accounts', JSON.stringify(result));
+//        sessionStorage.setItem('accounts', JSON.stringify(result));
         return of(JSON.parse(sessionStorage.getItem('accounts')));
       }, error => console.log(error));
       return this.accountService.getAllAccounts();
@@ -101,12 +101,12 @@ export class AccountCacheService {
   getGlobalOverview(): Observable<AccountOverview> {
     if (sessionStorage.getItem(this.globalOverviewKey) == null) {
       console.log('getting overview from server');
-      this.accountService.getOverview().subscribe(result => {
+      this.expenseService.getOverview().subscribe(result => {
         console.log('receiving: ' + result);
-        sessionStorage.setItem(this.globalOverviewKey, JSON.stringify(result));
+  //      sessionStorage.setItem(this.globalOverviewKey, JSON.stringify(result));
         return of(JSON.parse(sessionStorage.getItem(this.globalOverviewKey)));
       }, error => console.log(error));
-      return this.accountService.getOverview();
+      return this.expenseService.getOverview();
     } else {
       console.log('Accounts already cached')
       return of(JSON.parse(sessionStorage.getItem(this.globalOverviewKey)));

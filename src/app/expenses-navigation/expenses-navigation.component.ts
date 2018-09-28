@@ -7,6 +7,7 @@ import { EnvironmentService } from '../shared/environment/environment.service';
 import { AccountCacheService } from '../shared/service/cache/account-cache.service';
 import { AccountDTO } from '../shared/dto/accountDTO';
 import { AccountOverview } from '../shared/dto/account-overview';
+import { ExpenseService } from '../shared/expense/expense.service';
 
 @Component({
   selector: 'expenses-navigation',
@@ -24,7 +25,11 @@ export class ExpensesNavigationComponent {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private env: EnvironmentService, private cache: AccountCacheService) {}
+  constructor(private breakpointObserver: BreakpointObserver,
+    private env: EnvironmentService,
+    private expensesService: ExpenseService,
+    private cache: AccountCacheService,
+    private keycloack: KeycloakService) {}
 
   ngOnInit() {
     this.title = this.env.title;
@@ -32,7 +37,7 @@ export class ExpensesNavigationComponent {
      console.log('setting account list with lenght: ' + data.length);
      this.accountList = data;
    });
-   this.cache.getGlobalOverview().subscribe(data => {
+   this.expensesService.getOverview().subscribe(data => {
      console.log('overview done');
      this.overview = data;
      this.unexpensedSize = this.overview.unexpenced.length;
@@ -41,6 +46,7 @@ export class ExpensesNavigationComponent {
 
 logout()  {
   console.log('logout');
+  this.keycloack.logout();
 }
 
   }

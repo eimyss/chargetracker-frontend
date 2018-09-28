@@ -26,7 +26,6 @@ export class AccountService {
     if (this.environment.backend_enabled) {
       return this.http.get(this.environment.API + url);
     }
-
   }
 
 
@@ -34,32 +33,6 @@ export class AccountService {
     return this.http.get(this.environment.ACCOUNT_API + '/get/' + id);
   }
 
-
-  getOverviewForAccountID(id: any): Observable<any> {
-    return this.http.get(this.environment.API + '/account/overview/' + id)
-  }
-
-  doExpenseSearch(name: string): Observable<any> {
-    return this.http.get(this.environment.API + '/expenses/search?name=' + name);
-  }
-
-  getMockedExpenses(): Observable<any> {
-    // apparently table is not directly visible, if data delivered instantly...
-    return of(expenses).pipe(delay(new Date(Date.now() + 1000)));
-  }
-
-
-
-
-  public getOverview(): Observable<any> {
-    return this.http.get(this.environment.API + '/account/global')
-  }
-
-
-
-  getExpensesOverviewByAccountId(id: number): Observable<any> {
-    return this.http.get(this.environment.ACCOUNT_API + '/expenses/' + id);
-  }
 
   save(account: AccountDTO): Observable<any> {
     let result: Observable<Object>;

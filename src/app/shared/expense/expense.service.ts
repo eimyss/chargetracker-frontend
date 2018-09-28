@@ -29,6 +29,17 @@ export class ExpenseService {
     }
   }
 
+  getOverviewForAccountID(id: any): Observable<any> {
+    return this.http.get(this.environment.API + '/expenses/overview/' + id)
+  }
+
+  public getOverview(): Observable<any> {
+    return this.http.get(this.environment.API + '/expenses/global')
+  }
+
+  getExpensesOverviewByAccountId(id: number): Observable<any> {
+    return this.http.get(this.environment.ACCOUNT_API + '/expenses/' + id);
+  }
 
   getExpensesTypes(): Observable<any> {
           return this.http.get(this.environment.API + '/expenses/types');

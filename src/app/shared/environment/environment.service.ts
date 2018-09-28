@@ -6,8 +6,8 @@ import { environment } from '../../../environments/environment';
 @Injectable()
 export class EnvironmentService {
   public API = environment.API;
-  public EXPENSE_API = this.API + '/expense';
-  public SAVE_EXPENSES_API = this.API + '/save';
+  public EXPENSE_API = this.API + '/expenses';
+  public SAVE_EXPENSES_API = this.API + '/expenses/save';
   public ACCOUNT_API = this.API + '/account';
   public backend_enabled = environment.backend;
   public title = environment.title;
