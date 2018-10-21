@@ -47,11 +47,8 @@ export class ExpenseService {
 
 
   performTest(url: string): Observable<any> {
-    if (this.environment.backend_enabled) {
-          return this.http.get(this.environment.API + url);
+      return this.http.get(this.environment.API + url);
     }
-
-  }
 
 	doExpenseSearch(name: string):  Observable<any> {
 	    return this.http.get(this.environment.API + '/expenses/search?name=' + name);

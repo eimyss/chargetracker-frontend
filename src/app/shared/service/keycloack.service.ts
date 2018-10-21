@@ -18,7 +18,8 @@ export class KeycloakService {
   static init(): Promise<any> {
 
     let keycloakAuth: any = new Keycloak({
-        url: 'https://security.eimantas-services.de:443/auth',
+      url: 'https://security.eimantas-services.de:443/auth',
+      //url: 'https://java-3.eimantas.server:8543/auth',
         realm: 'expenses',
         clientId: 'expenses-app'
     });
@@ -59,13 +60,15 @@ export class KeycloakService {
   getToken(): Promise<string> {
     return new Promise<string>((resolve, reject) => {
       if (KeycloakService.auth.authz.token) {
-        KeycloakService.auth.authz.updateToken(5)
-          .success(() => {
+      //  KeycloakService.auth.authz.updateToken(5)
+        //  .success(() => {
+            console.log('token is updated');
             resolve(<string>KeycloakService.auth.authz.token);
-          })
-          .error(() => {
-            reject('Failed to refresh token');
-          });
+      //    })
+      //    .error(() => {
+    //        console.log('token is failed');
+        //    reject('Failed to refresh token');
+        //  });
       }
     });
   }

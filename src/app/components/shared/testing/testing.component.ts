@@ -17,7 +17,13 @@ testApi() {
   this.expenseService.performTest(this.textValue).subscribe(data => {
   console.log(data);
   this.antwort=data;
-});
+}, error => {
+        console.log(error);
+      },
+      () => {
+        console.log('done');
+      }
+ );
 
 }
 
