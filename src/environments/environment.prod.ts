@@ -1,7 +1,8 @@
 export const environment = {
   production: true,
-  clienturl: 'java-2.eimantas.server:80',
+  clienturl: 'https://ref.eimantas-services.de',
+  authUrl: 'https://security.eimantas-services.de',
   title: 'Eimantas - Expense App v.01 (Prod)',
-  API: 'http://java-2.eimantas.server:8081',
+  API: 'https://backend.eimantas-services.de',
   backend: true
 };

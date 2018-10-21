@@ -7,6 +7,7 @@ export const environment = {
   production: false,
   title: 'eimantas expenses (default)',
   clienturl: 'localhost:4200',
+  authUrl: 'https://192.168.123.157:8180/auth',
   API: 'http://java-2.eimantas.server:8081',
     backend: true
 };

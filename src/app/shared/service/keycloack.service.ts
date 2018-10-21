@@ -1,18 +1,24 @@
 
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { EnvironmentService } from '../environment/environment.service';
 
 declare var Keycloak: any;
 
 @Injectable()
 export class KeycloakService {
+  static environment: any;
   static auth: any = {};
   public loggedIn: boolean;
+
+
+  constructor(private environment: EnvironmentService) {
+  }
 
   static init(): Promise<any> {
 
     let keycloakAuth: any = new Keycloak({
-        url: 'http://192.168.123.157:8180/auth',
+        url: 'https://security.eimantas-services.de:443/auth',
         realm: 'expenses',
         clientId: 'expenses-app'
     });
