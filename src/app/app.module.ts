@@ -11,6 +11,7 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './shared/okta/auth.interceptor';
+import { CookieLawModule } from 'angular2-cookie-law';
 import { ChartsModule } from 'ng2-charts';
 import { HomeComponent } from './home/home.component';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -116,6 +117,7 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule,
     DemoUtilsModule,
+    CookieLawModule,
     ChartsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
