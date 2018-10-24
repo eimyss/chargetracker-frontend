@@ -29,7 +29,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
 
       const accessToken = await this.kc.getToken();
-  //    console.log('got access token: ' + accessToken);
+      console.log('got access token: ' + accessToken);
       request = request.clone({
         setHeaders: {
           Authorization: 'Bearer ' + accessToken
