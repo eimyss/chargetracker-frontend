@@ -17,7 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {
   MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,MatBadgeModule,
-  MatSortModule, MatTableModule, MatDatepickerModule, MatNativeDateModule, MatButtonModule, MatCardModule, MatListModule, MatToolbarModule, MatSelectModule, MatSidenavModule, MatIconModule
+  MatSortModule, MatTableModule, MatDatepickerModule, MatNativeDateModule, MatButtonModule, MatCardModule, MatListModule, MatToolbarModule, MatSelectModule, MatSidenavModule, MatIconModule, MatRadioModule
 } from "@angular/material";
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -43,8 +43,9 @@ import { ExpenseListComponent } from './components/tables/expense-list/expense-l
 import { ExpenseEditComponent } from './pages/expenses/expense-edit/expense-edit.component';
 import { ExpensesOverviewComponent } from './components/widgets/expenses-overview/expenses-overview.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { ProjectsComponent } from './pages/project/projects/projects.component';
 import { ProjectTableComponent } from './components/tables/project-table/project-table.component';
+import { ProjectListingComponent } from './project-listing/project-listing.component';
+import { ProjectsComponent } from './pages/project/projects.component';
 
 
 
@@ -69,7 +70,11 @@ const appRoutes: Routes = [
   },
   {
     path: 'project-info/:id',
-    component: ProjectsComponent
+   component: ProjectsComponent
+  },
+  {
+    path: 'adress-demo',
+  component: ProjectListingComponent
   },
   {
     path: 'project/list',
@@ -124,7 +129,8 @@ const appRoutes: Routes = [
     ExpensesDashboardComponent,
     AccountTableComponent,
     ProjectsComponent,
-    ProjectTableComponent
+    ProjectTableComponent,
+    ProjectListingComponent
   ],
   imports: [
     BrowserModule,
@@ -158,7 +164,8 @@ const appRoutes: Routes = [
     LayoutModule,
     MatSidenavModule,
     MatIconModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    MatRadioModule
   ],
   providers: [KeycloakService, ExpenseService, AccountService,BackendInfoServiceService, EnvironmentService, GiphyService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
 
