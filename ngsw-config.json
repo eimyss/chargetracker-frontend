@@ -1,7 +1,9 @@
+
+
 {
   "index": "/index.html",
   "assetGroups": [{
-    "name": "app",
+    "name": "client",
     "installMode": "prefetch",
     "resources": {
       "files": [

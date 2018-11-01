@@ -245,7 +245,7 @@
       }
     }
   },
-  "defaultProject": "micro-frontend",
+  "defaultProject": "client",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

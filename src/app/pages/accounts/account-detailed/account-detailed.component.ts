@@ -38,7 +38,6 @@ export class AccountDetailedComponent implements OnInit {
     console.log('saving...');
     this.accountService.save(this.account).subscribe(result => {
       console.log('done' + result)
-      this.accountCachce.refreshCache();
     //  this.gotoList();
     }, error => console.error(error));
   }

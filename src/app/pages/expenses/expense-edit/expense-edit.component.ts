@@ -44,7 +44,7 @@ export class ExpenseEditComponent implements OnInit, OnDestroy {
           if (expense) {
             this.expense = expense;
             this.expense.href = expense.id;
-      //      this.giphyService.get(expense.name).subscribe(url => expense.giphyUrl = url);
+            //      this.giphyService.get(expense.name).subscribe(url => expense.giphyUrl = url);
           } else {
             console.log(`Expense with id '${id}' not found, returning to list`);
             this.gotoList();
@@ -52,8 +52,13 @@ export class ExpenseEditComponent implements OnInit, OnDestroy {
         });
       }
     });
-    this.accounts = this.accuntCache.getAccountListNoPromise();
-    this.types = this.accuntCache.getExpensesTypes();
+    this.accuntCache.getAccountList().subscribe(data => {
+      this.accounts = data;
+    });
+
+    this.accuntCache.getExpensesTypes().subscribe(data => {
+      this.types = data;
+    });
 
   }
   ngOnDestroy() {

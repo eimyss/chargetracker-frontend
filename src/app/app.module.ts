@@ -43,6 +43,9 @@ import { ExpenseListComponent } from './components/tables/expense-list/expense-l
 import { ExpenseEditComponent } from './pages/expenses/expense-edit/expense-edit.component';
 import { ExpensesOverviewComponent } from './components/widgets/expenses-overview/expenses-overview.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { ProjectsComponent } from './pages/project/projects/projects.component';
+import { ProjectTableComponent } from './components/tables/project-table/project-table.component';
+
 
 
 const appRoutes: Routes = [
@@ -63,6 +66,14 @@ const appRoutes: Routes = [
   {
     path: 'home',
     component: ExpensesDashboardComponent
+  },
+  {
+    path: 'project-info/:id',
+    component: ProjectsComponent
+  },
+  {
+    path: 'project/list',
+    component: ProjectTableComponent
   },
   {
     path: 'account/list',
@@ -111,7 +122,9 @@ const appRoutes: Routes = [
     BackendInfoPageComponent,
     ExpensesNavigationComponent,
     ExpensesDashboardComponent,
-    AccountTableComponent
+    AccountTableComponent,
+    ProjectsComponent,
+    ProjectTableComponent
   ],
   imports: [
     BrowserModule,

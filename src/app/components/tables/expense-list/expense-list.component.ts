@@ -45,7 +45,7 @@ export class ExpenseListComponent implements OnInit {
 
   constructor(private expenseService: ExpenseService,
     private accuntCache: AccountCacheService,
-  private changeDetectorRefs: ChangeDetectorRef) { }
+    private changeDetectorRefs: ChangeDetectorRef) { }
 
   ngOnInit() {
 
@@ -54,9 +54,9 @@ export class ExpenseListComponent implements OnInit {
       if (val) {
         this.filterTable(val);
       } else {
-          this.fillTable();
+        this.fillTable();
       }
-  });
+    });
 
     this.expenseService.getAll().subscribe(data => {
       this.expenses = data;
@@ -66,41 +66,44 @@ export class ExpenseListComponent implements OnInit {
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     });
-    this.accounts = this.accuntCache.getAccountListNoPromise();
 
+    this.accuntCache.getAccountList().subscribe(data => {
+      this.accounts = data;
+    });
+
+}
+  public filterTable(value: any) {
+    console.log('search string with value ' + this.searchValue);
+    this.expenseService.doExpenseSearch(this.searchValue).subscribe((res: Expense[]) => {
+      console.log('setting options with size: ' + res.length);
+      this.options = res;
+      this.filteredOptions = res;
+      this.expenses = res;
+      this.length = this.expenses.length;
+      console.log('expenses done with lenght: ' + this.expenses.length + 'and set lenght : ' + this.length);
+      this.dataSource = new MatTableDataSource(this.expenses);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.changeDetectorRefs.detectChanges();
+      return res;
+    });
   }
-  public filterTable(value: any){
-        console.log('search string with value '+ this.searchValue);
-       this.expenseService.doExpenseSearch(this.searchValue).subscribe((res: Expense[]) => {
-        console.log('setting options with size: ' + res.length);
-        this.options = res;
-        this.filteredOptions = res;
-        this.expenses = res;
-        this.length = this.expenses.length;
-        console.log('expenses done with lenght: ' + this.expenses.length + 'and set lenght : ' + this.length);
-        this.dataSource = new MatTableDataSource(this.expenses);
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-        this.changeDetectorRefs.detectChanges();
-        return res;
-      });
-    }
 
-  public fillTable(){
-      console.log('empty string');
-      this.expenseService.getAll().subscribe(data => {
-        this.options = data;
-        this.filteredOptions = data;
-        this.expenses = data;
-        this.length = this.expenses.length;
-        console.log('expenses done with lenght: ' + this.expenses.length + 'and set lenght : ' + this.length);
-        this.dataSource = new MatTableDataSource(this.expenses);
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-          this.changeDetectorRefs.detectChanges();
-          return data;
-      });
-    }
+  public fillTable() {
+    console.log('empty string');
+    this.expenseService.getAll().subscribe(data => {
+      this.options = data;
+      this.filteredOptions = data;
+      this.expenses = data;
+      this.length = this.expenses.length;
+      console.log('expenses done with lenght: ' + this.expenses.length + 'and set lenght : ' + this.length);
+      this.dataSource = new MatTableDataSource(this.expenses);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.changeDetectorRefs.detectChanges();
+      return data;
+    });
+  }
 
   switchAccount() {
     console.log(this.accountId);
