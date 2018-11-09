@@ -1,0 +1,32 @@
+<div >
+
+<mat-card>
+  <form #bookingForm="ngForm" (ngSubmit)="save()">
+    <mat-card-header>
+      <mat-card-title><h2>{{booking.name ? 'Edit' : 'Add'}} Booking</h2></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+      <mat-form-field>
+        <input matInput placeholder="Booking Name" [(ngModel)]="booking.name"
+               required name="name" #name>
+      </mat-form-field>
+
+      </p>
+      <p>
+    
+</p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit"
+              [disabled]="!bookingForm.form.valid">Save</button>
+      <button mat-raised-button color="secondary" (click)="remove(booking.id)"
+              *ngIf="booking.id" type="button">Delete</button>
+      <a mat-button routerLink="/bookings-list">Cancel</a>
+    </mat-card-actions>
+   
+  </form>
+</mat-card>
+
+</div>

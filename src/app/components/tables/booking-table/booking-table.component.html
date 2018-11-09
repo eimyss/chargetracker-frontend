@@ -1,0 +1,44 @@
+<div class="mat-elevation-z8">
+
+  <div>
+  <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.serverBookingId}}</mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="projectId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Project Id:</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.projectId}}</mat-cell>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="startDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Start</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.startDate}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="endDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>End</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.endDate}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/booking-edit', row.serverBookingId]"></mat-row>
+  </mat-table>
+
+  <mat-paginator [length]="length"
+                [pageSize]="pageSize"
+                [pageSizeOptions]="pageSizeOptions"
+                (page)="pageEvent = $event">
+  </mat-paginator>
+</div>
+
+</div>

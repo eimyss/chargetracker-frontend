@@ -46,6 +46,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { ProjectTableComponent } from './components/tables/project-table/project-table.component';
 import { ProjectListingComponent } from './project-listing/project-listing.component';
 import { ProjectsComponent } from './pages/project/projects.component';
+import { BookingsComponent } from './pages/project/bookings/bookings.component';
+import { BookingTableComponent } from './components/tables/booking-table/booking-table.component';
 
 
 
@@ -81,6 +83,10 @@ const appRoutes: Routes = [
     component: ProjectTableComponent
   },
   {
+    path: 'booking/list',
+    component: BookingTableComponent
+  },
+  {
     path: 'account/list',
     component: AccountTableComponent
   },
@@ -105,6 +111,10 @@ const appRoutes: Routes = [
     component: ExpenseEditComponent
   },
   {
+    path: 'booking-edit/:id',
+    component: BookingsComponent
+  },
+  {
     path: 'account-edit/:id',
     component: AccountDetailedComponent
   }
@@ -115,6 +125,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     ExpenseListComponent,
+    BookingsComponent,
     ExpenseEditComponent,
     HomeComponent,
     ExpensesOverviewComponent,
@@ -130,7 +141,9 @@ const appRoutes: Routes = [
     AccountTableComponent,
     ProjectsComponent,
     ProjectTableComponent,
-    ProjectListingComponent
+    BookingTableComponent,
+    ProjectListingComponent,
+    BookingsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
 import { AccountDTO } from '../../../shared/dto/accountDTO';
 import { Expense } from '../../../shared/dto/expense';
 import { AccountCacheService } from '../../../shared/service/cache/account-cache.service';
@@ -72,7 +71,7 @@ export class ExpenseEditComponent implements OnInit, OnDestroy {
 
   save() {
     this.expenseService.save(this.expense).subscribe(result => {
-      console.log('saving: ' + this.expense)
+      console.log('saving: ' + this.expense);
       this.gotoList();
     }, error => console.log(error));
   }
