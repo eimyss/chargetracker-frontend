@@ -5,6 +5,7 @@ export class Expense {
   ort: string;
   href: string;
   expensable: boolean;
+  purpose: string;
   account: string;
   category: string;
   accountId: number;
