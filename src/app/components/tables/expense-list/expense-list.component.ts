@@ -23,7 +23,10 @@ export class ExpenseListComponent implements OnInit {
   accounts: AccountDTO[] = [];
   searchValue: any = 'test';
   myControl = new FormControl();
-  options: Expense[] = [{ id: 10, name: 'Bier', betrag: 11.4, ort: "Bingen", href: "", expensable: true, category: "Food", account: "Konto-1", accountId: 10, expenseDate: "01/02/2018", createDate: "01/02/2018", giphyUrl: "" }];
+  options: Expense[] = [{ id: 10, name: 'Bier',
+  betrag: 11.4, ort: 'Bingen', href: '', purpose: 'test',
+  expensable: true, category: 'Food', account: 'Konto-1',
+  accountId: 10, expenseDate: '01/02/2018', createDate: '01/02/2018', giphyUrl: '' }];
   filteredOptions: Expense[];
 
   length = 100;
