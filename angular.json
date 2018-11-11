@@ -133,7 +133,8 @@
                   "replace": "src/app/shared/service/keycloack.service.ts",
                   "with": "src/app/shared/service/keycloack.service-dev"
                 }
-              ]
+              ],
+              "serviceWorker": true
             },
             "production": {
               "optimization": true,
