@@ -1,32 +1,99 @@
-<div >
+<div>
 
-<mat-card>
-  <form #bookingForm="ngForm" (ngSubmit)="save()">
-    <mat-card-header>
-      <mat-card-title><h2>{{booking.name ? 'Edit' : 'Add'}} Booking</h2></mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p>
-      <mat-form-field>
-        <input matInput placeholder="Booking Name" [(ngModel)]="booking.name"
-               required name="name" #name>
-      </mat-form-field>
+  <mat-card>
+    <form #bookingForm="ngForm" (ngSubmit)="save()">
+      <mat-card-header>
+        <mat-card-title>
+          <h2>{{booking.name ? 'Edit' : 'Add'}} Booking</h2>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          <mat-form-field>
+            <input matInput placeholder="Booking Name" [(ngModel)]="booking.name" required name="name" #name>
+          </mat-form-field>
+        </p>
 
-      </p>
-      <p>
-    
-</p>
-    </mat-card-content>
+        <p>
+          <mat-form-field>
+            <input matInput placeholder="Booking Start Date" [(ngModel)]="booking.startDate" required name="startDate"
+              #name>
+          </mat-form-field>
+        </p>
 
-    <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit"
-              [disabled]="!bookingForm.form.valid">Save</button>
-      <button mat-raised-button color="secondary" (click)="remove(booking.id)"
-              *ngIf="booking.id" type="button">Delete</button>
-      <a mat-button routerLink="/bookings-list">Cancel</a>
-    </mat-card-actions>
-   
-  </form>
-</mat-card>
+        <p>
+          <mat-form-field>
+            <input matInput placeholder="Booking End Date" [(ngModel)]="booking.endDate" required name="endDate" #name>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <input matInput placeholder="Booking Project" [(ngModel)]="booking.projectId" required name="projectId"
+              #name>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <input matInput placeholder="Project Rate" [(ngModel)]="project.rate" required name="projectRate" #name>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <input matInput placeholder="Project Name" [(ngModel)]="project.name" required name="projectName" #name>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field>
+            <input matInput placeholder="Project Konto" [(ngModel)]="project.refBankAccountId" required name="projectrefBankAccountId"
+              #name>
+          </mat-form-field>
+        </p>
+
+
+        <p>
+          <mat-form-field>
+            <input matInput placeholder="Transaction Date" [(ngModel)]="transcation.processingDate" required name="transprocessingDate"
+              #name>
+          </mat-form-field>
+        </p>
+
+
+        <p>
+          <mat-form-field>
+            <input matInput placeholder="Transaction Amount" [(ngModel)]="transcation.amountAfter" required name="transAmountAfter"
+              #name>
+          </mat-form-field>
+        </p>
+
+
+        <p>
+          <mat-form-field>
+            <input matInput placeholder="Expense Purpose" [(ngModel)]="expense.purpose" required name="expensepurpose"
+              #name>
+          </mat-form-field>
+        </p>
+
+
+        <p>
+          <mat-form-field>
+            <input matInput placeholder="Expense Amount" [(ngModel)]="expense.betrag" required name="expenseAmount"
+              #name>
+          </mat-form-field>
+        </p>
+
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!bookingForm.form.valid">Save</button>
+        <button mat-raised-button color="secondary" (click)="remove(booking.id)" *ngIf="booking.id" type="button">Delete</button>
+        <a mat-button routerLink="/bookings-list">Cancel</a>
+      </mat-card-actions>
+
+    </form>
+  </mat-card>
 
 </div>

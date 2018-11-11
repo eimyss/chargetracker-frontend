@@ -16,9 +16,11 @@ import { ChartsModule } from 'ng2-charts';
 import { HomeComponent } from './home/home.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {
-  MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,MatBadgeModule,
-  MatSortModule, MatTableModule, MatDatepickerModule, MatNativeDateModule, MatButtonModule, MatCardModule, MatListModule, MatToolbarModule, MatSelectModule, MatSidenavModule, MatIconModule, MatRadioModule
-} from "@angular/material";
+  MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, MatBadgeModule,
+  MatSortModule, MatTableModule, MatDatepickerModule,
+  MatNativeDateModule, MatButtonModule, MatCardModule, MatListModule,
+  MatToolbarModule, MatSelectModule, MatSidenavModule, MatIconModule, MatRadioModule
+} from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
@@ -48,7 +50,7 @@ import { ProjectListingComponent } from './project-listing/project-listing.compo
 import { ProjectsComponent } from './pages/project/projects.component';
 import { BookingsComponent } from './pages/project/bookings/bookings.component';
 import { BookingTableComponent } from './components/tables/booking-table/booking-table.component';
-
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 
 const appRoutes: Routes = [
@@ -165,6 +167,8 @@ const appRoutes: Routes = [
     MatMenuModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
     MatToolbarModule,
     MatInputModule,
     MatTableModule,
@@ -180,7 +184,9 @@ const appRoutes: Routes = [
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     MatRadioModule
   ],
-  providers: [KeycloakService, ExpenseService, AccountService,BackendInfoServiceService, EnvironmentService, GiphyService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+  providers: [KeycloakService, ExpenseService, AccountService,
+    BackendInfoServiceService, EnvironmentService, GiphyService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
 
   bootstrap: [AppComponent],
 

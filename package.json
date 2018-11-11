@@ -33,6 +33,7 @@
     "chart.js": "^2.7.3",
     "core-js": "^2.5.7",
     "date-fns": "^1.29.0",
+    "ng-pick-datetime": "^7.0.0",
     "ng-pwa-tools": "0.0.15",
     "ng2-charts": "^1.6.0",
     "npm": "^6.4.1",
