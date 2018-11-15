@@ -3,6 +3,7 @@ import { AccountOverview } from '../../../shared/dto/account-overview';
 import { ExpenseService } from '../../../shared/expense/expense.service';
 import { AccountDTO } from '../../../shared/dto/accountDTO';
 import { AccountCacheService } from '../../../shared/service/cache/account-cache.service';
+import { ChartDataModel, SerieModel } from '../../../shared/dto/chartBarModel';
 
 
 
@@ -15,66 +16,65 @@ import { AccountCacheService } from '../../../shared/service/cache/account-cache
 })
 export class ExpensesOverviewComponent implements OnInit {
 
+  overview: any;
+  selectedAccount = 1;
 
-overview : AccountOverview;
 
-public barChartOptions:any = {
-  scaleShowVerticalLines: false,
-  responsive: true,
-  maintainAspectRatio: false
-};
-public barChartLabels:string[] = ['KW10', 'KW11', 'KW12', 'KW13', 'KW14', 'KW15', 'KW16'];
-public barChartType:string = 'bar';
-public barChartLegend:boolean = true;
+  accountData: ChartDataModel = {
+    data: [{
+      name: 'der Name',
+      value: 11
+    }]
+  };
 
-public barChartData:any[] = [
-  {data: [10, 8, 10, 0, 10, 40, 10], label: 'Essen'},
-  {data: [20, 15, 15, 15, 35, 15, 15], label: 'Fahrkosten'},
-  {data: [0, 200, 0, 0, 50, 15, 0], label: 'Sonstige Ausgaben'},
-  {data: [0, 0, 0, 100, 0, 0, 90], label: 'Private Ausgaben'}
+  // options
+  showXAxis = false;
+  showYAxis = true;
+  barPadding = 12;
+  gradient = false;
+  showLegend = true;
+  showXAxisLabel = false;
+  showYAxisLabel = true;
+  yAxisLabel = 'amount';
 
-];
+  colorScheme = 'night';
 
-// events
-public chartClicked(e:any):void {
-  console.log(e);
-}
-
-public chartHovered(e:any):void {
-  console.log(e);
-}
-
-public randomize():void {
-  // Only Change 3 values
-  let data = [
-    Math.round(Math.random() * 100),
-    59,
-    80,
-    (Math.random() * 100),
-    56,
-    (Math.random() * 100),
-    40];
-  let clone = JSON.parse(JSON.stringify(this.barChartData));
-  clone[0].data = data;
-  this.barChartData = clone;
-  /**
-   * (My guess), for Angular to recognize the change in the dataset
-   * it has to change the dataset variable directly,
-   * so one way around it, is to clone the data, change it and then
-   * assign it;
-   */
-}
-
-  constructor(private cacheService: AccountCacheService) { }
+  constructor(private cacheService: AccountCacheService) {
+    Object.assign(this.accountData);
+   }
 
 
   ngOnInit() {
     // do some init data
-    this.overview = new AccountOverview();
+   // this.overview = new AccountOverview();
     this.cacheService.getGlobalOverview().subscribe(data => {
       console.log('overview done');
-      this.overview = data;
+    this.overview = data;
+
+
+    // if we have overview, why not display it?
+    if (this.overview.overview) {
+        const inhalt = this.overview.overview;
+        console.log(inhalt);
+        for (const monthlyAmounts of inhalt) {
+          if (monthlyAmounts.accountId === this.selectedAccount) {
+            if ( monthlyAmounts.overviews) {
+              for (const monthentry of monthlyAmounts.overviews) {
+                this.accountData.data.push(new SerieModel(monthentry.month, monthentry.amount));
+              }
+            }
+            this.accountData.data = [...this.accountData.data];
+          }
+        }
+    }
+
+    console.log('done');
    });
   }
 
+  onSelect(event) {
+    console.log(event);
+  }
+
 }
+

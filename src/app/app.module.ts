@@ -51,6 +51,14 @@ import { ProjectsComponent } from './pages/project/projects.component';
 import { BookingsComponent } from './pages/project/bookings/bookings.component';
 import { BookingTableComponent } from './components/tables/booking-table/booking-table.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { CovalentLayoutModule } from '@covalent/core/layout';
+import { CovalentStepsModule  } from '@covalent/core/steps';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { CovalentHttpModule } from '@covalent/http';
+import { CovalentHighlightModule } from '@covalent/highlight';
+import { CovalentMarkdownModule } from '@covalent/markdown';
+import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
+import { PortalModule } from '@angular/cdk/portal';
 
 
 const appRoutes: Routes = [
@@ -159,9 +167,11 @@ const appRoutes: Routes = [
     CalendarModule.forRoot(),
     MatButtonModule,
     MatCardModule,
+    NgxChartsModule,
     MatListModule,
     MatSelectModule,
     MatTableModule,
+    PortalModule,
     MatGridListModule,
     MatBadgeModule,
     MatMenuModule,
@@ -174,6 +184,12 @@ const appRoutes: Routes = [
     MatTableModule,
     MatAutocompleteModule,
     MatPaginatorModule,
+    CovalentLayoutModule,
+    CovalentStepsModule,
+    CovalentHttpModule.forRoot(),
+    CovalentHighlightModule,
+    CovalentMarkdownModule,
+    CovalentDynamicFormsModule,
     MatSortModule,
     MatProgressSpinnerModule,
     FormsModule,
