@@ -33,6 +33,10 @@ export class AccountService {
     return this.http.get(this.environment.ACCOUNT_API + '/get/' + id);
   }
 
+  getHistoryForAccount(id: number) {
+    return this.http.get(this.environment.ACCOUNT_API + '/history/get/' + id);
+  }
+
 
   save(account: AccountDTO): Observable<any> {
     let result: Observable<Object>;

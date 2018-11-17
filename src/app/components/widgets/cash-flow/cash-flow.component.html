@@ -1,12 +1,17 @@
-<div class="content">
-  Current Balance (all accounts) : 3000  <button  mat-button color="primary">Overview</button>
-    <canvas baseChart height="100"
-                 [datasets]="lineChartData"
-                 [labels]="lineChartLabels"
-                 [options]="lineChartOptions"
-                 [colors]="lineChartColors"
-                 [legend]="lineChartLegend"
-                 [chartType]="lineChartType"
-                 (chartHover)="chartHovered($event)"
-                 (chartClick)="chartClicked($event)"></canvas>
+<div [style.height.px]="280" class="push-top-sm">
+  <ngx-charts-line-chart
+  [scheme]="colorScheme"
+  [results]="multi"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel"
+  [autoScale]="autoScale"
+  [timeline]="timeline"
+  (select)="onSelect($event)">
+</ngx-charts-line-chart>
  </div>

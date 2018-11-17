@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from '../../../shared/service/account.service';
+import { ChartSeriesModel, SeriesModel } from '../../../shared/dto/chartseriesModel';
+import {multi} from './multi';
 
 @Component({
   selector: 'app-cash-flow',
@@ -7,69 +10,68 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CashFlowComponent implements OnInit {
 
+  selectedAccount = 1;
+  accountName = 'Active Konto';
+  receivedData: any;
 
-  public lineChartData:Array<any> = [
-      {data: [14000, 15000, 14880, 8100, 20000, 18000, 20000], label: 'Business Konto'},
-      {data: [2800, 3900, 6000, 7900, 9000, 8000, 9998], label: 'Privat Konto'}
-    ];
-    public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-    public lineChartOptions:any = {
-      scaleShowVerticalLines: false,
-      responsive: true,
-      maintainAspectRatio: false
-    };
-    public lineChartColors:Array<any> = [
-      { // grey
-        backgroundColor: 'rgba(148,159,177,0.2)',
-        borderColor: 'rgba(148,159,177,1)',
-        pointBackgroundColor: 'rgba(148,159,177,1)',
-        pointBorderColor: '#fff',
-        pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: 'rgba(148,159,177,0.8)'
-      },
-      { // dark grey
-        backgroundColor: 'rgba(77,83,96,0.2)',
-        borderColor: 'rgba(77,83,96,1)',
-        pointBackgroundColor: 'rgba(77,83,96,1)',
-        pointBorderColor: '#fff',
-        pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: 'rgba(77,83,96,1)'
-      },
-      { // grey
-        backgroundColor: 'rgba(148,159,177,0.2)',
-        borderColor: 'rgba(148,159,177,1)',
-        pointBackgroundColor: 'rgba(148,159,177,1)',
-        pointBorderColor: '#fff',
-        pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: 'rgba(148,159,177,0.8)'
-      }
-    ];
-    public lineChartLegend:boolean = true;
-    public lineChartType:string = 'line';
+  accountData: ChartSeriesModel = {
+    name: 'test',
+    series: [{
+      name: 'derName',
+      value: 11
+    },
+    {
+      name: 'derName',
+      value: 11
+    },
+    {
+      name: 'derName',
+      value: 11
+    }]
+  };
 
-    public randomize():void {
-      let _lineChartData:Array<any> = new Array(this.lineChartData.length);
-      for (let i = 0; i < this.lineChartData.length; i++) {
-        _lineChartData[i] = {data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label};
-        for (let j = 0; j < this.lineChartData[i].data.length; j++) {
-          _lineChartData[i].data[j] = Math.floor((Math.random() * 100) + 1);
-        }
-      }
-      this.lineChartData = _lineChartData;
-    }
 
-    // events
-    public chartClicked(e:any):void {
-      console.log(e);
-    }
+  multi: any[];
 
-    public chartHovered(e:any):void {
-      console.log(e);
-    }
+  // options
+  showXAxis = true;
+  showYAxis = true;
+  gradient = true;
+  showLegend = true;
+  showXAxisLabel = true;
+  xAxisLabel = 'Number';
+  showYAxisLabel = true;
+  yAxisLabel = 'Color Value';
+  timeline = true;
 
-  constructor() { }
+  colorScheme = {
+    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+  };
+
+  // line, area 
+  autoScale = true;
+
+  constructor(private accountService: AccountService) {
+    // debug whats the difference
+    Object.assign(this, {multi});
+    //Object.assign(this.accountData);
+  }
 
   ngOnInit() {
+
+    this.accountService.getHistoryForAccount(this.selectedAccount).subscribe(data => {
+      this.receivedData = data;
+      for (const days of this.receivedData) {
+        if (days.createDate && days.amount) {
+          console.log('pushing : ' + days.createDate + ' and ' + days.amount);
+      //    this.accountData.series.push(new SeriesModel( days.createDate, days.amount));
+        } else  {
+          console.log('item is empty: ' + days);
+        }
+      }
+     // this.accountData.series = [...this.accountData.series];
+    });
+
   }
 
 }
