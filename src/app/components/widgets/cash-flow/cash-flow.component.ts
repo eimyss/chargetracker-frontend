@@ -15,19 +15,19 @@ export class CashFlowComponent implements OnInit {
   receivedData: any;
 
   accountData: ChartSeriesModel = {
-    name: 'test',
-    series: [{
-      name: 'derName',
-      value: 11
-    },
-    {
-      name: 'derName',
-      value: 11
-    },
-    {
-      name: 'derName',
-      value: 11
-    }]
+    data: [
+      {
+        name: 'test',
+        series: [{
+          name: 'test',
+          value: 1323
+        },
+        {
+          name: 'another',
+          value: 1340
+        }],
+      },
+    ],
   };
 
 
@@ -53,8 +53,8 @@ export class CashFlowComponent implements OnInit {
 
   constructor(private accountService: AccountService) {
     // debug whats the difference
-    Object.assign(this, {multi});
-    //Object.assign(this.accountData);
+    Object.assign(this.accountData);
+
   }
 
   ngOnInit() {
@@ -64,12 +64,13 @@ export class CashFlowComponent implements OnInit {
       for (const days of this.receivedData) {
         if (days.createDate && days.amount) {
           console.log('pushing : ' + days.createDate + ' and ' + days.amount);
-      //    this.accountData.series.push(new SeriesModel( days.createDate, days.amount));
+        this.accountData.data[0].series.push(({name:  'days.createDate', value: days.amount}));
+       // this.multi.series.push(new SeriesModel( days.createDate, days.amount));
         } else  {
           console.log('item is empty: ' + days);
         }
       }
-     // this.accountData.series = [...this.accountData.series];
+    this.accountData.data = [...this.accountData.data];
     });
 
   }
