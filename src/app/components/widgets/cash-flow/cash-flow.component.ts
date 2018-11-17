@@ -74,5 +74,9 @@ export class CashFlowComponent implements OnInit {
     });
 
   }
+  onSelect(event) {
+    console.log(event);
+  }
+
 
 }
