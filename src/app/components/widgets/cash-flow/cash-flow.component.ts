@@ -17,14 +17,14 @@ export class CashFlowComponent implements OnInit {
   accountData: ChartSeriesModel = {
     data: [
       {
-        name: 'test',
+        name: 'Konto 1',
         series: [{
           name: 'test',
-          value: 1323
+          value: 5
         },
         {
           name: 'another',
-          value: 1340
+          value: 4
         }],
       },
     ],
@@ -64,7 +64,7 @@ export class CashFlowComponent implements OnInit {
       for (const days of this.receivedData) {
         if (days.createDate && days.amount) {
           console.log('pushing : ' + days.createDate + ' and ' + days.amount);
-        this.accountData.data[0].series.push(({name:  'days.createDate', value: days.amount}));
+        this.accountData.data[0].series.push(({name:  days.createDate, value: days.amount}));
        // this.multi.series.push(new SeriesModel( days.createDate, days.amount));
         } else  {
           console.log('item is empty: ' + days);
