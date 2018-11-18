@@ -1,4 +1,3 @@
-
 <div class="grid-container">
   <h1 class="mat-h1">Dashboard</h1>
   <mat-grid-list cols="2" rowHeight="350px">
@@ -17,7 +16,9 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <div> <app-expenses-overview></app-expenses-overview></div>
+          <div>
+            <app-expenses-overview></app-expenses-overview>
+          </div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
@@ -38,7 +39,9 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <div> <app-cash-flow></app-cash-flow></div>
+          <div>
+            <app-cash-flow></app-cash-flow>
+          </div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
@@ -60,45 +63,8 @@
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
           <div>
-            <div>
-            <!--   <div class="col-md-6" style="margin-bottom: 10px">-->
-
-            <!--   <button (click)="randomize()">CLICK</button> -->
+            <app-transaction-table></app-transaction-table>
           </div>
-           <div>
-                 <mat-list class="streched">
-           <mat-list-item> Expected Balance after this month (Privat): 4000  </mat-list-item>
-            <mat-list-item> Expected Balance after this month (Business): 4000  </mat-list-item>
-            <mat-list-item> Not expensed expenses : 1000EUR <button  mat-button color="primary">3 expenses</button></mat-list-item>
-           <mat-list-item> Expected balance in 3 Months (Privat): 9000 </mat-list-item>
-            <mat-list-item> Expected balance in 3 Months (Business): 28000 </mat-list-item>
-          </mat-list>
-
-          </div>
-            WERTE SIND SCHON DA
-            <table >
-            <tr>
-              <tr>
-                <th>Is active:true </th>
-                <th>Total of expenses: 1212 werte sind da</th>
-                <th>Expensed Count:123123 </th>
-                <th>Account Name: overview </th>
-              </tr>
-              <tr>
-                  <th></th>
-                <th >breakdown by category </th>
-                <th></th>
-              </tr>
-
-              <tr>
-                <th> Fahrkosten: 300 (10 items) </th>
-                <th> Sonstige: 100 (10 items)</th>
-                <th> private: 500 (2 items) </th>
-                <th> Essen: 200 (10 items) </th>
-              </tr>
-                </table>
-
-              </div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
@@ -107,7 +73,7 @@
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
-          4
+            4
             <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
               <mat-icon>more_vert</mat-icon>
             </button>
@@ -118,7 +84,8 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <div>  <app-create-new-item></app-create-new-item>
+          <div>
+            <app-create-new-item></app-create-new-item>
             <button mat-button>Details..</button>
             <button mat-button>Reports...</button>
           </div>

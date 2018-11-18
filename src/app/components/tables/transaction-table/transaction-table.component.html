@@ -1,0 +1,34 @@
+<div class="mat-elevation-z8">
+
+  <div>
+  <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="amountAfter">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Amount After</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.amountAfter}}</mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Type</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.type}}</mat-cell>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="processingDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Processing Date</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.processingDate}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/transaction-info', row.id]"></mat-row>
+  </mat-table>
+
+  <mat-paginator [length]="length"
+                [pageSize]="pageSize"
+                [pageSizeOptions]="pageSizeOptions"
+                (page)="pageEvent = $event">
+  </mat-paginator>
+</div>
+
+</div>

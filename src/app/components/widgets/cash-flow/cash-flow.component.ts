@@ -44,9 +44,7 @@ export class CashFlowComponent implements OnInit {
   yAxisLabel = 'Color Value';
   timeline = true;
 
-  colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
-  };
+  colorScheme = 'night';
 
   // line, area 
   autoScale = true;

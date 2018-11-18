@@ -10,7 +10,7 @@ import { BookingDTO } from '../../dto/BookingDTO';
 export class ProcessingService {
   constructor(private http: HttpClient, private environment: EnvironmentService) { }
 
-  getBookingList(): Observable <any> {
+  getTransactionsList(): Observable <any> {
       return this.http.get(this.environment.API + '/transactions/get/all');
   }
 

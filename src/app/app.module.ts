@@ -51,14 +51,16 @@ import { ProjectsComponent } from './pages/project/projects.component';
 import { BookingsComponent } from './pages/project/bookings/bookings.component';
 import { BookingTableComponent } from './components/tables/booking-table/booking-table.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
-import { CovalentLayoutModule } from '@covalent/core/layout';
-import { CovalentStepsModule  } from '@covalent/core/steps';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { CovalentHttpModule } from '@covalent/http';
 import { CovalentHighlightModule } from '@covalent/highlight';
 import { CovalentMarkdownModule } from '@covalent/markdown';
 import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
+import { CovalentCommonModule, CovalentLayoutModule, CovalentMediaModule, CovalentExpansionPanelModule,
+  CovalentStepsModule, CovalentLoadingModule, CovalentDialogsModule, CovalentSearchModule, CovalentPagingModule,
+  CovalentNotificationsModule, CovalentMenuModule, CovalentDataTableModule, CovalentMessageModule } from '@covalent/core';
 import { PortalModule } from '@angular/cdk/portal';
+import { TransactionTableComponent } from './components/tables/transaction-table/transaction-table.component';
 
 
 const appRoutes: Routes = [
@@ -151,6 +153,7 @@ const appRoutes: Routes = [
     AccountTableComponent,
     ProjectsComponent,
     ProjectTableComponent,
+    TransactionTableComponent,
     BookingTableComponent,
     ProjectListingComponent,
     BookingsComponent
@@ -184,11 +187,25 @@ const appRoutes: Routes = [
     MatTableModule,
     MatAutocompleteModule,
     MatPaginatorModule,
+    CovalentCommonModule,
+    CovalentLayoutModule,
+    CovalentMediaModule,
+    CovalentExpansionPanelModule,
+    CovalentStepsModule,
+    CovalentDialogsModule,
+    CovalentLoadingModule,
+    CovalentSearchModule,
+    CovalentPagingModule,
+    CovalentNotificationsModule,
+    CovalentMenuModule,
+    CovalentDataTableModule,
+    CovalentMessageModule,
     CovalentLayoutModule,
     CovalentStepsModule,
     CovalentHttpModule.forRoot(),
     CovalentHighlightModule,
     CovalentMarkdownModule,
+    CovalentSearchModule,
     CovalentDynamicFormsModule,
     MatSortModule,
     MatProgressSpinnerModule,

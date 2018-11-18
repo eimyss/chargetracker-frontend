@@ -32,26 +32,58 @@
     </mat-nav-list>
   </mat-sidenav>
 
-    <mat-toolbar color="primary">
-        <span class="toolbar-spacer"></span>
-        <button
-          type="button"
-          aria-label="Toggle sidenav"
-          mat-icon-button
-          (click)="drawer.toggle()">
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  <td-layout-nav [toolbarTitle]="(media.registerQuery('gt-xs') | async) ? 'Dashboard' : ''" logo="assets:covalent" navigationRoute="/">
+    <button mat-icon-button td-menu-button tdLayoutToggle (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div td-toolbar-content layout="row" layout-align="start center" flex>
+      <span flex *ngIf="!searchBox.searchVisible"></span>
+      <td-search-box hide-xs flex #searchBox [ngClass]="{'push-left push-right mat-whiteframe-z1 bgc-white tc-black': searchBox.searchVisible }"  placeholder="search"></td-search-box>
+      <span>
+        <button mat-icon-button matTooltip="Alerts" [matMenuTriggerFor]="notificationsMenu">
+          <td-notification-count color="accent" [notifications]="4">
+            <mat-icon>notifications</mat-icon>
+          </td-notification-count>
         </button>
-            <span>Welcome to {{title}}!</span>
- <span class="fill-space"></span>
+        <mat-menu #notificationsMenu="matMenu">
+          <td-menu>
+            <div td-menu-header class="mat-subhead">Notifications</div>
+            <mat-nav-list dense>
+              <ng-template let-last="last" ngFor [ngForOf]="[0,1,2]">
+                <a mat-list-item>
+                  <mat-icon matListAvatar>today</mat-icon>
+                  <h4 mat-line><span class="text-wrap">Candy sales are on the rise!</span></h4>
+                  <p mat-line>22 minutes ago</p>
+                </a>
+                <mat-divider *ngIf="!last"></mat-divider>
+              </ng-template>
+            </mat-nav-list>
+            <button mat-button color="accent" td-menu-footer>
+              See All Notifications
+            </button>
+          </td-menu>
+        </mat-menu>
+      </span>
+      <span>
+        <button mat-icon-button matTooltip="More" [mat-menu-trigger-for]="more">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu xPosition="before" #more="matMenu">
+            <button mat-menu-item>
+              <mat-icon>brightness_high</mat-icon>
+              <span>Light Mode</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>brightness_low</mat-icon>
+              <span>Dark Mode</span>
+            </button>
+        </mat-menu>
+      </span>
+    </div>
 
-        <button mat-raised-button color="accent"  [routerLink]="['/home']">Home
-        </button>
-        <button mat-raised-button color="accent" (click)="logout()" [routerLink]="['/home']">Logout
-        </button>
-
-         <mat-icon class="example-icon">verified_user</mat-icon>
-    </mat-toolbar>
     <router-outlet></router-outlet>
+
+  </td-layout-nav>
 
     <cookie-law></cookie-law>
 

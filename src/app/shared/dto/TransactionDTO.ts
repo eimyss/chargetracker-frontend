@@ -1,6 +1,6 @@
 export class TranscationDTO {
   id: number;
-  entityTransactionType: string;
+  type: string;
   amountBefore: number;
   amountAfter: number;
   processingDate: Date;

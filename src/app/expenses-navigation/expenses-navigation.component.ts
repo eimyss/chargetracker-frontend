@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -8,16 +8,19 @@ import { AccountCacheService } from '../shared/service/cache/account-cache.servi
 import { AccountDTO } from '../shared/dto/accountDTO';
 import { AccountOverview } from '../shared/dto/account-overview';
 import { ExpenseService } from '../shared/expense/expense.service';
+import { TdMediaService, TdDigitsPipe, TdLayoutManageListComponent, TdRotateAnimation } from '@covalent/core';
+import { MatDialog, MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'expenses-navigation',
   templateUrl: './expenses-navigation.component.html',
   styleUrls: ['./expenses-navigation.component.css']
 })
-export class ExpensesNavigationComponent {
-  overview : AccountOverview;
+export class ExpensesNavigationComponent implements OnInit {
+  overview: AccountOverview;
   title = 'app';
-  unexpensedSize: number = 0;
+  unexpensedSize = 0;
   accountList: AccountDTO[] = new Array<AccountDTO>();
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -29,7 +32,12 @@ export class ExpensesNavigationComponent {
     private env: EnvironmentService,
     private expensesService: ExpenseService,
     private cache: AccountCacheService,
-    private keycloack: KeycloakService) {}
+    private keycloack: KeycloakService,
+    public media: TdMediaService,
+              public dialog: MatDialog,
+              private _changeDetectorRef: ChangeDetectorRef,
+              private _iconRegistry: MatIconRegistry,
+              private _domSanitizer: DomSanitizer) {}
 
   ngOnInit() {
     this.title = this.env.title;
@@ -43,6 +51,11 @@ export class ExpensesNavigationComponent {
      this.unexpensedSize = this.overview.unexpenced.length;
   });
   }
+
+  choose(selection: string): void {
+    console.log(selection);
+  }
+
 
 logout()  {
   console.log('logout');

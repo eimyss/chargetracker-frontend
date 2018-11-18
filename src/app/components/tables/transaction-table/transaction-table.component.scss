@@ -1,0 +1,13 @@
+@import "~@angular/material/theming";
+@import '~@covalent/core/theming/all-theme';
+
+
+@import '~@covalent/markdown/markdown-theme';
+@import '~@covalent/highlight/highlight-theme';
+
+$accent:  mat-palette($mat-deep-orange, A400);
+
+.mat-row:hover {
+  background-color: mat-color($accent);
+  cursor: pointer;
+}
