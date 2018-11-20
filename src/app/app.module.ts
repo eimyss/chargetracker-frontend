@@ -52,6 +52,7 @@ import { BookingsComponent } from './pages/project/bookings/bookings.component';
 import { BookingTableComponent } from './components/tables/booking-table/booking-table.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import {MatTabsModule} from '@angular/material/tabs';
 import { CovalentHttpModule } from '@covalent/http';
 import { CovalentHighlightModule } from '@covalent/highlight';
 import { CovalentMarkdownModule } from '@covalent/markdown';
@@ -60,6 +61,7 @@ import { CovalentCommonModule, CovalentLayoutModule, CovalentMediaModule, Covale
   CovalentStepsModule, CovalentLoadingModule, CovalentDialogsModule, CovalentSearchModule, CovalentPagingModule,
   CovalentNotificationsModule, CovalentMenuModule, CovalentDataTableModule, CovalentMessageModule } from '@covalent/core';
 import { PortalModule } from '@angular/cdk/portal';
+import { CovalentTabSelectModule } from '@covalent/core/tab-select';
 import { TransactionTableComponent } from './components/tables/transaction-table/transaction-table.component';
 
 
@@ -162,6 +164,7 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule,
     DemoUtilsModule,
+    CovalentTabSelectModule,
     CookieLawModule,
     ChartsModule,
     BrowserAnimationsModule,
@@ -183,6 +186,7 @@ const appRoutes: Routes = [
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     MatToolbarModule,
+    MatTabsModule,
     MatInputModule,
     MatTableModule,
     MatAutocompleteModule,

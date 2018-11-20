@@ -31,17 +31,17 @@ export class CashFlowComponent implements OnInit {
   };
 
 
-  multi: any[];
 
   // options
-  showXAxis = true;
+  showXAxis = false;
   showYAxis = true;
   gradient = true;
+  roundDomains = true;
   showLegend = true;
-  showXAxisLabel = true;
-  xAxisLabel = 'Number';
+  showXAxisLabel = false;
+  xAxisLabel = 'Zeit';
   showYAxisLabel = true;
-  yAxisLabel = 'Color Value';
+  yAxisLabel = 'Amount';
   timeline = true;
 
   colorScheme = 'night';

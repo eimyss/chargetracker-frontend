@@ -11,27 +11,17 @@ import { TranscationDTO } from '../../../shared/dto/TransactionDTO';
 import { ExpenseService } from '../../../shared/expense/expense.service';
 import { Expense } from '../../../shared/dto/expense';
 
-export const CUSTOM_DATE_TIME_FORMATS = {
-  parseInput: 'YYYY-MM-dd HH:mm:ss',
-  fullPickerInput: 'YYYY-MM-dd HH:mm:ss',
-  datePickerInput: 'YYYY-MM-dd',
-  timePickerInput: 'HH:mm:ss',
-  monthYearLabel: 'MMM',
-  dateA11yLabel: 'LL',
-  monthYearA11yLabel: 'MMMM YYYY',
-};
-
-
 @Component({
   selector: 'app-bookings',
   templateUrl: './bookings.component.html',
   styleUrls: ['./bookings.component.css'],
   providers: [
-        {provide: OWL_DATE_TIME_FORMATS, useValue: CUSTOM_DATE_TIME_FORMATS},
 ],
 })
 export class BookingsComponent implements OnInit, OnDestroy  {
   sub: Subscription;
+  value = '';
+  disabled = false;
   booking: BookingDTO = new BookingDTO();
   expense: Expense = new Expense();
   project: ProjectDTO = new ProjectDTO();
@@ -82,6 +72,9 @@ export class BookingsComponent implements OnInit, OnDestroy  {
     this.sub.unsubscribe();
   }
 
+  remove(id: string) {
+    console.log(id);
+  }
 
   gotoList() {
     this.router.navigate(['/booking-list']);

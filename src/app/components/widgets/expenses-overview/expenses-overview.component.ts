@@ -21,18 +21,16 @@ export class ExpensesOverviewComponent implements OnInit {
 
 
   accountData: ChartDataModel = {
-    data: [{
-      name: 'der Name',
-      value: 11
-    }]
+    data: []
   };
 
   // options
   showXAxis = false;
   showYAxis = true;
-  barPadding = 12;
+  barPadding = 48;
   gradient = false;
   showLegend = true;
+  showRefLabels = false;
   showXAxisLabel = false;
   showYAxisLabel = true;
   yAxisLabel = 'amount';
