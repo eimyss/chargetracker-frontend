@@ -72,7 +72,7 @@ export class BookingsComponent implements OnInit, OnDestroy  {
     this.sub.unsubscribe();
   }
 
-  remove(id: string) {
+  remove(id: any) {
     console.log(id);
   }
 

@@ -52,26 +52,34 @@ import { BookingsComponent } from './pages/project/bookings/bookings.component';
 import { BookingTableComponent } from './components/tables/booking-table/booking-table.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 import { CovalentHttpModule } from '@covalent/http';
 import { CovalentHighlightModule } from '@covalent/highlight';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CovalentMarkdownModule } from '@covalent/markdown';
 import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
-import { CovalentCommonModule, CovalentLayoutModule, CovalentMediaModule, CovalentExpansionPanelModule,
+import {
+  MatButtonToggleModule,
+  MatSlideToggleModule, MatDialogModule, MatSnackBarModule,
+  MatTooltipModule, MatRippleModule,
+  MatSliderModule
+} from '@angular/material';
+import {
+  CovalentCommonModule, CovalentLayoutModule, CovalentMediaModule, CovalentExpansionPanelModule,
   CovalentStepsModule, CovalentLoadingModule, CovalentDialogsModule, CovalentSearchModule, CovalentPagingModule,
-  CovalentNotificationsModule, CovalentMenuModule, CovalentDataTableModule, CovalentMessageModule } from '@covalent/core';
+  CovalentNotificationsModule, CovalentMenuModule, CovalentDataTableModule, CovalentMessageModule
+} from '@covalent/core';
 import { PortalModule } from '@angular/cdk/portal';
 import { CovalentTabSelectModule } from '@covalent/core/tab-select';
 import { TransactionTableComponent } from './components/tables/transaction-table/transaction-table.component';
 
-
 const appRoutes: Routes = [
-//  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  //  { path: '', redirectTo: '/home', pathMatch: 'full' },
 
-{
-  path: '',
-  component: ExpensesDashboardComponent
-},
+  {
+    path: '',
+    component: ExpensesDashboardComponent
+  },
   {
     path: 'expense-list',
     component: ExpenseListComponent
@@ -86,11 +94,11 @@ const appRoutes: Routes = [
   },
   {
     path: 'project-info/:id',
-   component: ProjectsComponent
+    component: ProjectsComponent
   },
   {
     path: 'adress-demo',
-  component: ProjectListingComponent
+    component: ProjectListingComponent
   },
   {
     path: 'project/list',
@@ -134,7 +142,6 @@ const appRoutes: Routes = [
   }
 ];
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -161,7 +168,7 @@ const appRoutes: Routes = [
     BookingsComponent
   ],
   imports: [
-    BrowserModule,
+        BrowserModule,
     HttpClientModule,
     DemoUtilsModule,
     CovalentTabSelectModule,
@@ -174,6 +181,7 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatCardModule,
     NgxChartsModule,
+    NoopAnimationsModule,
     MatListModule,
     MatSelectModule,
     MatTableModule,
@@ -188,9 +196,20 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatTabsModule,
     MatInputModule,
-    MatTableModule,
     MatAutocompleteModule,
     MatPaginatorModule,
+    MatIconModule,
+    MatButtonToggleModule,
+    MatSlideToggleModule,
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    MatSidenavModule,
+    MatTooltipModule,
+    MatRippleModule,
+    MatRadioModule,
+    MatSliderModule,
+    /** Covalent Modules */
     CovalentCommonModule,
     CovalentLayoutModule,
     CovalentMediaModule,
@@ -204,22 +223,17 @@ const appRoutes: Routes = [
     CovalentMenuModule,
     CovalentDataTableModule,
     CovalentMessageModule,
-    CovalentLayoutModule,
-    CovalentStepsModule,
     CovalentHttpModule.forRoot(),
     CovalentHighlightModule,
     CovalentMarkdownModule,
-    CovalentSearchModule,
     CovalentDynamicFormsModule,
     MatSortModule,
-    MatProgressSpinnerModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
     LayoutModule,
-    MatSidenavModule,
-    MatIconModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     MatRadioModule
+
   ],
   providers: [KeycloakService, ExpenseService, AccountService,
     BackendInfoServiceService, EnvironmentService, GiphyService,

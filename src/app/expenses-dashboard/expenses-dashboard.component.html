@@ -1,96 +1,172 @@
-<div class="grid-container">
-  <h1 class="mat-h1">Dashboard</h1>
-  <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile [colspan]="2" [rowspan]="1">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            1
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Expand</button>
-              <button mat-menu-item>Remove</button>
-            </mat-menu>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>
-            <app-expenses-overview></app-expenses-overview>
+<td-layout [mode]="(media.registerQuery('gt-sm') | async) ? 'side' : 'push'" [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '240px' : '100%'">
+
+    <mat-sidenav-container flex>
+      <mat-sidenav #sidenav align="end">
+        <div layout="column" layout-fill>
+          <mat-toolbar>Settings</mat-toolbar>
+          <div flex class="mat-content">
+
           </div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
+        </div>
 
+      </mat-sidenav>
 
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            2
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Expand</button>
-              <button mat-menu-item>Remove</button>
-            </mat-menu>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>
-            <app-cash-flow></app-cash-flow>
+      <td-layout-nav color="none">
+        <div td-toolbar-content flex layout="row" layout-align="start center">
+          <span hide-xs>Overview</span>
+          <span flex></span>
+          <span [style.width.px]="100" layout="row" class="push-left-sm push-right mat-body-1">
+            <mat-form-field floatPlaceholder="never" flex>
+              <input matInput readonly [(ngModel)]="dateFrom" [matDatepicker]="pickerFrom">
+              <mat-datepicker-toggle matSuffix matTooltip="Start date" [for]="pickerFrom"></mat-datepicker-toggle>
+              <mat-datepicker #pickerFrom [startAt]="dateFrom"></mat-datepicker>
+            </mat-form-field>
+
+          </span>
+          <span hide-xs class="mat-body-2 push-right"> to </span>
+          <span [style.width.px]="100" layout="row" class="mat-body-1">
+            <mat-form-field floatPlaceholder="never" flex>
+              <input matInput readonly [(ngModel)]="dateTo" [matDatepicker]="pickerTo">
+              <mat-datepicker-toggle matSuffix matTooltip="End date" [for]="pickerTo"></mat-datepicker-toggle>
+              <mat-datepicker #pickerTo [startAt]="dateTo"></mat-datepicker>
+            </mat-form-field>
+
+          </span>
+          <button matTooltip="Dashboard Settings" matTooltipPosition="before" type="button" mat-icon-button (click)="sidenav.open()">
+            <mat-icon>settings</mat-icon>
+          </button>
+        </div>
+        <div flex layout-gt-sm="row" tdMediaToggle="gt-xs" layout-wrap [mediaClasses]="['push-sm']">
+          <div flex-gt-sm="50">
+            <mat-card>
+              <mat-card-title>
+                <div layout="row" layout-align="start center">
+                  <span flex>Expenses By month</span>
+                  <span>
+                    <button mat-icon-button matTooltip="Card settings" [mat-menu-trigger-for]="settings1">
+                      <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu xPosition="before" #settings1="matMenu">
+                      <button mat-menu-item> Settings </button>
+                      <!--  <button mat-menu-item (click)="openTemplate()"> Settings </button> -->
+                      <mat-divider></mat-divider>
+                      <button mat-menu-item> Remove </button>
+                    </mat-menu>
+                  </span>
+                </div>
+              </mat-card-title>
+              <mat-divider></mat-divider>
+              <div [style.height.px]="280" class="push-top-sm">
+                <app-expenses-overview></app-expenses-overview>
+              </div>
+            </mat-card>
           </div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-
-
-    <mat-grid-tile [colspan]="1" [rowspan]="2">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            3
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Expand</button>
-              <button mat-menu-item>Remove</button>
-            </mat-menu>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>
-            <app-transaction-table></app-transaction-table>
+          <div flex-gt-sm="50">
+            <mat-card>
+              <mat-card-title>
+                <div layout="row" layout-align="start center">
+                  <span flex>Konto Graph</span>
+                  <span>
+                    <button mat-icon-button matTooltip="Card settings" [mat-menu-trigger-for]="settings2">
+                      <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu xPosition="before" #settings2="matMenu">
+                      <button mat-menu-item> Settings </button>
+                      <mat-divider></mat-divider>
+                      <button mat-menu-item> Remove </button>
+                    </mat-menu>
+                  </span>
+                </div>
+              </mat-card-title>
+              <mat-divider></mat-divider>
+              <div class="pad">
+                <div [style.height.px]="250">
+                  <app-cash-flow></app-cash-flow>
+                </div>
+              </div>
+            </mat-card>
           </div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            4
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Expand</button>
-              <button mat-menu-item>Remove</button>
-            </mat-menu>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>
+          <div flex-gt-sm="50">
+            <mat-card>
+              <mat-card-title>
+                <div layout="row" layout-align="start center">
+                  <span flex>Last transactions</span>
+                  <span>
+                    <button mat-icon-button matTooltip="Card settings" [mat-menu-trigger-for]="settings3">
+                      <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu xPosition="before" #settings3="matMenu">
+                      <button mat-menu-item> Settings </button>
+                      <mat-divider></mat-divider>
+                      <button mat-menu-item> Remove </button>
+                    </mat-menu>
+                  </span>
+                </div>
+              </mat-card-title>
+              <mat-divider></mat-divider>
+              <div class="pad-top pad-bottom">
+                <div class="overflow-hidden" [style.height.px]="250">
+                  <div [style.height.px]="270">
+                    <app-transaction-table></app-transaction-table>
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+          <div flex-gt-sm="50">
+            <mat-card>
+              <mat-card-title>
+                <div layout="row" layout-align="start center">
+                  <span flex>Create new</span>
+                  <span>
+                    <button mat-icon-button matTooltip="Card settings" [mat-menu-trigger-for]="settings4">
+                      <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu xPosition="before" #settings4="matMenu">
+                      <button mat-menu-item> Settings </button>
+                      <mat-divider></mat-divider>
+                      <button mat-menu-item> Remove </button>
+                    </mat-menu>
+                  </span>
+                </div>
+              </mat-card-title>
+              <mat-divider></mat-divider>
             <app-create-new-item></app-create-new-item>
-            <button mat-button>Details..</button>
-            <button mat-button>Reports...</button>
+            </mat-card>
           </div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-</div>
+        </div>
+      </td-layout-nav>
+    </mat-sidenav-container>
+  <td-layout-footer>
+    <div layout="row" layout-align="start center">
+      <span class="mat-caption">Made with <mat-icon class="text-md">favorite</mat-icon> for developement </span>
+    </div>
+  </td-layout-footer>
+</td-layout>
+
+
+<ng-template #dialogContent let-dialogRef="dialogRef">
+  <div layout="column" layout-fill>
+    <h2 mat-dialog-title>
+      Card Settings
+    </h2>
+    <mat-divider></mat-divider>
+    <mat-dialog-content flex>
+      <form class="pad">
+        <div layout="row" layout-margin>
+          <mat-form-field flex>
+            <input matInput placeholder="Card order" value="1" type="number">
+          </mat-form-field>
+          <mat-form-field flex>
+            <input matInput placeholder="Card width" value="100" type="number">
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-dialog-content>
+    <mat-divider></mat-divider>
+    <mat-dialog-actions align="end">
+      <button type="button" mat-button class="text-upper" (click)="dialogRef.close()">Close</button>
+      <button type="button" mat-button color="accent" class="text-upper" (click)="dialogRef.close()">Save</button>
+    </mat-dialog-actions>
+  </div>
+</ng-template>

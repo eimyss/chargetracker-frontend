@@ -27,7 +27,7 @@ export class ExpensesOverviewComponent implements OnInit {
   // options
   showXAxis = false;
   showYAxis = true;
-  barPadding = 48;
+  barPadding = 25;
   gradient = false;
   showLegend = true;
   showRefLabels = false;
