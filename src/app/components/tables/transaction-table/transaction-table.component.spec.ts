@@ -1,19 +1,19 @@
 
 import { fakeAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExpesnsesTableComponent } from './expesnses-table.component';
+import { TransactionTableComponent } from './transaction-table.component';
 
 describe('ExpesnsesTableComponent', () => {
-  let component: ExpesnsesTableComponent;
-  let fixture: ComponentFixture<ExpesnsesTableComponent>;
+  let component: TransactionTableComponent;
+  let fixture: ComponentFixture<TransactionTableComponent>;
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExpesnsesTableComponent ]
+      declarations: [ TransactionTableComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ExpesnsesTableComponent);
+    fixture = TestBed.createComponent(TransactionTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
