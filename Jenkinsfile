@@ -1,5 +1,5 @@
 podTemplate(label: 'buildpod', containers: [
-    containerTemplate(name: 'maven', image: 'maven:3.3.9-jdk-8-alpine', command: 'cat', ttyEnabled: true),
+    containerTemplate(name: 'npm', image: 'jaydp17/jenkins-slave-nodejs', command: 'cat', ttyEnabled: true),
     containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true),
     containerTemplate(name: 'kubectl', image: 'jorgeacetozi/jenkins-slave-kubectl', command: 'cat', ttyEnabled: true)
 ],
@@ -16,8 +16,8 @@ podTemplate(label: 'buildpod', containers: [
    }
 
         stage('Maven Build') {
-            container('maven') {
-                    sh 'mvn clean install -Dmaven.test.skip'
+            container('npm') {
+                    sh 'npm build'
             }
         }
 
